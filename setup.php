@@ -10,7 +10,12 @@ mysql_connect(
 
 mysql_select_db($db);
 
-mysql_query('DROP TABLES *');
+$result = mysql_query('DROP TABLES service, worker, recommendation');
+if (! $result) {
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  echo $message;
+}
 
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `service` (
@@ -67,20 +72,6 @@ mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188553322', '1')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '1023132131', '1', '4', 'Gosto muito dela')");
 
-$result = mysql_query("SELECT * FROM service");
-if ($result) {
-    echo "<ul>";
-    while ($row = mysql_fetch_assoc($result)) {
-        echo "<li>";
-        echo "ID: ";
-        echo $row['id'];
-        echo "Name: ";
-        echo $row['name'];
-        echo "</li>";
-    }
-    echo "</ul>";
-}
-
-echo "<hr />";
+echo "Done!";
 
 ?>
