@@ -1,5 +1,5 @@
 <?php
 
-echo "Hblablai {$_GET['name']}";
+echo "vnS {$_GET['name']}";
 
 ?>
