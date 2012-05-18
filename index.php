@@ -1,5 +1,5 @@
 <?php
 
-echo "Hi {$_GET['name']}";
+echo "Hblablai {$_GET['name']}";
 
 ?>
