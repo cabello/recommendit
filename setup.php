@@ -10,7 +10,19 @@ mysql_connect(
 
 mysql_select_db($db);
 
-$result = mysql_query('DROP TABLES service, worker, recommendation');
+$result = mysql_query('DROP TABLES recommendation');
+if (! $result) {
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  echo $message;
+}
+$result = mysql_query('DROP TABLES worker');
+if (! $result) {
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  echo $message;
+}
+$result = mysql_query('DROP TABLES service');
 if (! $result) {
   $message  = 'Invalid query: ' . mysql_error() . "\n";
   $message .= 'Whole query: ' . $query;
