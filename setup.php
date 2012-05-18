@@ -28,7 +28,7 @@ CREATE  TABLE IF NOT EXISTS `worker` (
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `fg_service` (`id_service` ASC) ,
-  CONSTRAINT `fg_service`
+  CONSTRAINT `fg_worker_service`
     FOREIGN KEY (`id_service` )
     REFERENCES `service` (`id` )
     ON DELETE NO ACTION
@@ -48,12 +48,12 @@ CREATE  TABLE IF NOT EXISTS `recommendation` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `fg_worker` (`id_worker` ASC) ,
   INDEX `fg_service` (`id_service` ASC) ,
-  CONSTRAINT `fg_worker`
+  CONSTRAINT `fg_recommendation_worker`
     FOREIGN KEY (`id_worker` )
     REFERENCES `worker` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fg_service`
+  CONSTRAINT `fg_recommendation_service`
     FOREIGN KEY (`id_service` )
     REFERENCES `service` (`id` )
     ON DELETE NO ACTION
