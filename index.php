@@ -15,7 +15,9 @@ if ($result) {
     echo "<ul>";
     while ($row = mysql_fetch_assoc($result)) {
         echo "<li>";
+        echo "ID: ";
         echo $row['id'];
+        echo "Name: ";
         echo $row['name'];
         echo "</li>";
     }
