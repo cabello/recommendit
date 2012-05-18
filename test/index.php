@@ -6,6 +6,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <body>
 <div id="fb-root"></div>
 <script>
+
 window.fbAsyncInit = function() {
 	FB.init({
 appId      : '[362571837137094]', // App ID
@@ -24,14 +25,8 @@ xfbml      : true  // parse XFBML
  }(document));
 </script>
 
-<fb:login-button show-faces="true" width="200" max-rows="1" scope="publish_actions">
+<fb:login-button show-faces="true" width="400" height="1000" max-rows="1" scope="publish_actions">
 </fb:login-button>
-
-<h3>Stuffed Cookies</h3>
-<p>
-<img title="Stuffed Cookies" 
-src="http://fbwerks.com:8000/zhen/cookie.jpg" 
-width="550"/>
 </p>
 </body>
 </html>
