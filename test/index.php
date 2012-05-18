@@ -30,7 +30,7 @@ xfbml      : true  // parse XFBML
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 <?
-	header('locartion: https://graph.facebook.com/me');
+	header('location: https://graph.facebook.com/me');
 ?>
 </p>
 </body>
