@@ -27,6 +27,9 @@ xfbml      : true  // parse XFBML
 
 <fb:login-button show-faces="true" width="400" height="1000" max-rows="1" scope="publish_actions">
 </fb:login-button>
+
+<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+
 </p>
 </body>
 </html>
