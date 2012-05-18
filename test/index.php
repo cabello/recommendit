@@ -9,7 +9,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 
 window.fbAsyncInit = function() {
 	FB.init({
-appId      : '[362571837137094]', // App ID
+appId      : 362571837137094, // App ID
 status     : true, // check login status
 cookie     : true, // enable cookies to allow the server to access the session
 xfbml      : true  // parse XFBML
