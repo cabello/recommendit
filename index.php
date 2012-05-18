@@ -15,13 +15,39 @@ if ($result) {
     echo "<ul>";
     while ($row = mysql_fetch_assoc($result)) {
         echo "<li>";
-        echo "ID: ";
-        echo $row['id'];
-        echo "Name: ";
-        echo $row['name'];
+        print_r($row);
         echo "</li>";
     }
     echo "</ul>";
 }
+
+echo "<hr />";
+
+$result = mysql_query("SELECT * FROM worker");
+if ($result) {
+    echo "<ul>";
+    while ($row = mysql_fetch_assoc($result)) {
+        echo "<li>";
+        print_r($row);
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+
+echo "<hr />";
+
+$result = mysql_query("SELECT * FROM recommendation");
+if ($result) {
+    echo "<ul>";
+    while ($row = mysql_fetch_assoc($result)) {
+        echo "<li>";
+        print_r($row);
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+
+echo "<hr />";
+
 
 ?>
