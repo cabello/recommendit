@@ -10,7 +10,7 @@ mysql_connect(
 
 mysql_select_db($db);
 
-mysql_query('DROP TABLES');
+mysql_query('DROP TABLES *');
 
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `service` (
