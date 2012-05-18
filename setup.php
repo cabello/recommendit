@@ -10,6 +10,8 @@ mysql_connect(
 
 mysql_select_db($db);
 
+mysql_query('DROP TABLES *');
+
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `service` (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -61,7 +63,7 @@ CREATE  TABLE IF NOT EXISTS `recommendation` (
 ENGINE = InnoDB
 ');
 
-//mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
+mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188553322', '1')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '1023132131', '1', '4', 'Gosto muito dela')");
 
