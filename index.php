@@ -45,6 +45,10 @@ if ($result) {
         echo "</li>";
     }
     echo "</ul>";
+} else {
+  $message  = 'Invalid query: ' . mysql_error() . "\n";
+  $message .= 'Whole query: ' . $query;
+  echo $message;
 }
 
 echo "<hr />";
