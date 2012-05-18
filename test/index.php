@@ -29,7 +29,9 @@ xfbml      : true  // parse XFBML
 </fb:login-button>
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
-
+<?
+	header('locartion: https://graph.facebook.com/me');
+?>
 </p>
 </body>
 </html>
