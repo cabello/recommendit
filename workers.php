@@ -182,7 +182,16 @@ function stars($rating) {
           <form class="form-inline" id='new-worker-form'>
             <input type="text" class="input-large name" placeholder="Name" name="name" id="new-worker-name" />
             <input type="text" class="input-small" placeholder="Phone" name="phone" id="new-worker-phone" />
-
+            <input type="hidden" name="rating" id="rating" />
+              <div id="rateMe" title="Rate Me..." class="rating">
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus"></span>
+                <span id="ratingSaved"></span>
+              </div>
 
             <input type="hidden" name="id_service" id="new-worker-id_service" value="1" />
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-worker-comment"></textarea>
@@ -202,7 +211,7 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating" id="rating" />
+              <input type="hidden" name="rating" id="rating2" />
               <div id="rateMe" title="Rate Me..." class="rating">
                 <a id="_1" title="ehh..." class="icon-star-empty"></a>
                 <a id="_2" title="Not Bad" class="icon-star-empty"></a>
@@ -288,6 +297,8 @@ function stars($rating) {
            $.jGrowl("Recommendation added!");
         });
 
+        $('.rating2 a').hover(rating, off);
+        $('.rating2 a').click(rateIt);
         $('#add-new-comment').click(function() {
           $.post('new_comment.php', $('#new-comment-form').serialize());
           $('#oldWorker').modal('hide');
