@@ -71,8 +71,8 @@
         </div>
         <div class="modal-body">
           <form class="form-inline" id='new-worker-form'>
-            <input type="text" class="input-large name" placeholder="Name" name="name" />
-            <input type="text" class="input-small" placeholder="Phone" name="phone" />
+            <input type="text" class="input-large name" placeholder="Name" name="name" id="new-worker-name" />
+            <input type="text" class="input-small" placeholder="Phone" name="phone" id="new-worker-phone" />
             <input type="hidden" name="rating" id="rating" />
               <div id="rateMe" title="Rate Me..." class="rating">
                 <a id="_1" title="ehh..." class="icon-star-empty"></a>
@@ -85,7 +85,7 @@
               </div>
 
             <input type="hidden" name="id_service" value="1" />
-            <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment"></textarea>
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-worker-comment"></textarea>
           </form>
         </div>
         <div class="modal-footer">
@@ -169,9 +169,9 @@
         $('#add-new-worker').click(function() {
           $.post('new_worker.php', $('#new-worker-form').serialize());
           $('#modal-new-worker').modal('hide');
-          $('#name').val('');
-          $('#phone').val('');
-          $('#comment').val('');
+          $('#new-worker-name').val('');
+          $('#new-worker-phone').val('');
+          $('#new-worker-comment').val('');
           rated = 0;
         });
       });
