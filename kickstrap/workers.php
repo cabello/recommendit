@@ -121,12 +121,9 @@ while ($rec = mysql_fetch_assoc($works2)) {
     }
     echo '</a></div>';
     echo '    <div class="span6">';
-
-    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
   }
 
-  echo $rec['comment'];
-  echo "<br />";
+  echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
 }
 
 if ($servs) {
