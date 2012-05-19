@@ -55,7 +55,7 @@
 <div id="fb-root"></div>
 <script>
 <?php
-  $permittion_names = "read_friendlists,friends_photos";
+  $permittion_names = "friends_about_me";
   $last_param = "_unique_are_you";
 
   $app_secret = "51bb5cf55b06641f625a2e4f20e60334";

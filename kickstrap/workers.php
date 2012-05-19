@@ -35,8 +35,6 @@ if ( ! $_SESSION['user_id']) {
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="extras/h5bp/js/libs/modernizr-2.5.3.min.js"></script>
-  <script type="text/javascript" language="javascript" src="js/masked-input.js"></script>
-  
   <style type="text/css">
   #rateStatus{float:left; margin-left: 4px;}
   #rateMe{float:left; margin-left: 4px; height:auto;}
@@ -70,7 +68,7 @@ $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
-$query = "https://graph.facebook.com/501050133/friends?fields=id,picture";
+$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id%2Cpicture";
 $response = file_get_contents($query);
 echo '<pre>';
 print_r($response);
@@ -222,7 +220,6 @@ if ($servs) {
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
     <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
-
 
 	  <!-- end scripts -->
 
