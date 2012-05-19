@@ -1,3 +1,4 @@
+<?session_start();?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
 xmlns:fb="https://www.facebook.com/2008/fbml"> 
 <head>
@@ -11,6 +12,12 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 	$index_url = "http://fb-hacktoon.herokuapp.com/";
 	$permittion_names = "read_friendlists,read_insights";
 	$last_param = "_unique_are_you";
+	
+	$app_secret = "51bb5cf55b06641f625a2e4f20e60334";
+
+	$_SESSION["app_secret"] = $app_secret;
+	$_SESSION["app_id"] = $app_id;
+	$_SESSION["redirect_uri"] = $index_url;
 ?>
 window.fbAsyncInit = function() {
 	FB.init({
