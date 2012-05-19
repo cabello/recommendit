@@ -1,0 +1,16 @@
+<?php session_start(); ?>
+
+<?php
+require('bd.php');
+
+if(count($_POST)){
+	
+	$result = mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_POST['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['id_service']."', '".$_POST['rating']."', '".$_POST['comment']."')");
+    if ( ! $result) {
+        die(mysql_error());
+    }
+}
+
+// TODO: Protect against SQL injection
+
+?>

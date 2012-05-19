@@ -200,18 +200,27 @@ function stars($rating) {
           <h3 id="old_service_name"></h3>
         </div>
         <div class="modal-body">
-          <form class="form-inline">
+          <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
+              <input type="hidden" name="rating" id="rating" />
+              <div id="rateMe" title="Rate Me..." class="rating">
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus"></span>
+                <span id="ratingSaved"></span>
+              </div>
             </p>
-            <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-comment-comment"></textarea>
             <input type="hidden" id="old_worker_id" name="id_worker" />
             <input type="hidden" id="old_service_id" name="id_service" />
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal">Add comment</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-comment">Add comment</a>
         </div>
       </div>
 
@@ -277,6 +286,14 @@ function stars($rating) {
           $('#new-worker-comment').val('');
           rated = 0;
         });
+
+        $('#add-new-comment').click(function() {
+          $.post('new_comment.php', $('#new-comment-form').serialize());
+          $('#oldWorker').modal('hide');
+          $('#new-comment-comment').val('');
+          rated = 0;
+        });
+
         $('.service-name a').click(function(e) {
           $('#new-worker-id_service').val($(e.target).data('id-service'));
           $('#new-worker-service-name').html($(e.target).data('service-name'));
