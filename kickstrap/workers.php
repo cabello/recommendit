@@ -67,12 +67,12 @@ mysql_select_db($db);
 
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
-$recs = mysql_query("SELECT id, id_facebook, id_worker, floor(avg(rating)), comment FROM recommendation GROUP BY id_worker");
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
 
-        echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'"></a></h2>';
+      echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'"></a></h2>';
 
       $service_id = $serv_i["id"];
       $q1 = "SELECT * FROM worker where id_service = $service_id";
@@ -82,10 +82,18 @@ if ($servs) {
           $worker_id = $worker_i["id"];
           $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
           $x = mysql_fetch_assoc($q);
-          $rating = $x["rating"];
+          $rating = floor($x["rating"]);
 
                 echo '<div class="row-fluid row-recommendation">';
-                echo '    <div class="span6">'.$worker_i["name"].' - '.$worker_i["phone"].' <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>';
+                echo '    <div class="span6">'.$worker_i["name"].' - '.$worker_i["phone"].' <a data-toggle="modal" href="#oldWorker">';
+                for ($i = 1; $i <= 5; $i++) {
+                  if ($i <= $rating) {
+                    echo '<span class="icon-star"></span>&nbsp';
+                  } else {
+                    echo '<span class="icon-star-empty"></span>&nbsp';
+                  }
+                }
+                echo '</a></div>';
                 echo '    <div class="span6">';
                 while ($rec_i = mysql_fetch_assoc($recs)) {
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
@@ -95,8 +103,6 @@ if ($servs) {
                 }
                 echo '    </div>';
                 echo '</div>';
-
-          echo "Rating:".$rating."<br />";
 
           $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id");
         }
