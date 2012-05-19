@@ -97,7 +97,10 @@ mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Cyntia', '118
 
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '501050133', '1', '4', 'Gosto muito dela')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '361759103', '1', '2', 'Robo minha grana')");
-mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '762134103', '1', '5', 'Melhor do Mundo!')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('2', '462734163', '11', '5', 'Melhor do Mundo!')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('3', '356134103', '21', '5', 'Melhor do Mundo!')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('4', '262184106', '31', '5', 'Melhor do Mundo!')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('5', '15213u183', '41', '5', 'Melhor do Mundo!')");
 
 echo "Done!";
 
