@@ -252,7 +252,7 @@ function stars($rating) {
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
     <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
-    <script type="text/javascript" language="javascript" src="extras/jgrowl/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="extras/jgrowl/jquery.jgrowl.min.js"></script>
 
 	  <!-- end scripts -->
 
