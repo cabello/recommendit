@@ -148,7 +148,7 @@ function stars($rating) {
   $return = '';
 
   for ($i = 0; $i < $rating; $i++) {
-    $return .= '<span class="icon-star"></span>&nbsp';
+    $return .= "<span class='icon-star'></span>&nbsp";
   }
 
   return $return;
