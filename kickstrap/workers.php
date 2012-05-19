@@ -304,9 +304,8 @@ if ($worker != null) {
           $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
         $('.rate_old_worker').click(function(e){
-          console.log(e);
-          $('#old_worker_id').val($(e.target).data('worker-id'));
-          $('#old_worker_message').html($(e.target).data('worker-name'));
+          $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
+          $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
         });
       });
       </script>
