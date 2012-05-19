@@ -84,7 +84,7 @@ oauth      : true
 
 <div class="fb-login-button">Login with Facebook</div>
 <?php
-header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
+//header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
 ?>
 </p>
 
