@@ -26,7 +26,7 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
 
-	if(isset($_POST['name'])){
+	if(isset($_POST['rating'])){
 		$SQLQuery = "INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_POST['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['service']."', '".$_POST['rating']."', '".$_POST['comment']."')";
 		echo $SQLQuery;
 		mysql_query($SQLQuery);
@@ -36,7 +36,12 @@ error_reporting(E_ALL);
 ?>
 
 
-
+<?php
+if (count($_POST) > 0) {
+  print json_encode($_POST);
+  die();
+}
+?>
 
 
 <div>
