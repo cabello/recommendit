@@ -68,11 +68,8 @@ $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
-$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id%2Cpicture";
+$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture&access_token=".$_SESSION["token"];
 $response = file_get_contents($query);
-echo '<pre>';
-print_r($response);
-echo '</pre>';
 
 $data = json_decode($response, true);
 $friends_ids = array();
@@ -82,12 +79,6 @@ foreach ($data["data"] as $item) {
   $friends_ids[] = $item["id"];
   $pictures[$item["id"]] = $item["picture"];
 }
-
-echo '<pre>';
-print_r($friends_ids);
-print_r($pictures);
-echo '</pre>';
-
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
@@ -115,12 +106,9 @@ if ($servs) {
                 }
                 echo '</a></div>';
                 echo '    <div class="span6">';
-                /*while ($rec_i = mysql_fetch_assoc($recs)) {
-                    $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
-                    $answer = file_get_contents($query);
-                    $answer = json_decode($answer, true);
-                    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>';
-                }*/
+                while ($rec_i = mysql_fetch_assoc($recs)) {
+                    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$pictures[$rec_i["id_facebook"]].'" /></a>';
+                }
                 echo '    </div>';
                 echo '</div>';
 
