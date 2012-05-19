@@ -86,16 +86,32 @@ foreach ($data["data"] as $item) {
 };
 $friends_ids .= $_SESSION['user_id'].')';
 
-$q2 = "SELECT service.name service_name, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id";
+$q2 = "SELECT service.name service_name, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id, worker.id";
 $works2 = mysql_query($q2);
-echo "<pre>";
 if (! $works2) {
+  echo "<pre>";
   echo mysql_error();
+  echo "</pre>"
 }
+
+$service = null;
+$worker = null;
 while ($worker_debug = mysql_fetch_assoc($works2)) {
-  print_r($worker_debug);
+  if ($service == null || $service != $worker_debug['service_name']) {
+    $service = $worker_debug['service_name'];
+    echo $service;
+    echo "<br />";
+  }
+
+  if ($worker == null || $worker != $worker_debug['name']) {
+    $worker = $worker_debug['name'];
+    echo $worker;
+    echo "<br />";
+  }
+
+  echo $worker_debug['comment'];
+  echo "<br />";
 }
-echo "</pre>";
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
