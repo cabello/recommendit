@@ -70,7 +70,7 @@ $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FRO
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
 
-      echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'"></a></h2>';
+      echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'" data-service-name="'.$serv_i["name"].'"></a></h2>';
 
       $service_id = $serv_i["id"];
       $q1 = "SELECT * FROM worker where id_service = $service_id";
@@ -116,7 +116,7 @@ if ($servs) {
       <div class="modal fade" id="modal-new-worker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
-          <h3>Diarista</h3>
+          <h3 id="new-worker-service-name">Diarista</h3>
         </div>
         <div class="modal-body">
           <form class="form-inline" id='new-worker-form'>
@@ -133,7 +133,7 @@ if ($servs) {
                 <span id="ratingSaved">Rating Saved!</span>
               </div>
 
-            <input type="hidden" name="id_service" value="1" />
+            <input type="hidden" name="new-worker-id_service" value="1" />
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-worker-comment"></textarea>
           </form>
         </div>
@@ -224,7 +224,8 @@ if ($servs) {
           rated = 0;
         });
         $('.service-name a').click(function(e) {
-          console.log(e);
+          $('#new-worker-id_service').val($(e.target).data('id-service'));
+          $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
       });
       </script>
