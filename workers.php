@@ -358,12 +358,15 @@ function stars($rating) {
         $('.rate_old_worker').click(function(e){
           node = $(e.target);
 
-          anchor = node.parentsUntil('a');
+          if ( ! node.data('worker-id') {
+            node = node.parentsUntil('a');
+          }
+          console.log(node);
 
-          $('#old_worker_id').val($(anchor).data('worker-id'));
-          $('#old_worker_message').html($(anchor).data('worker-name'));
-          $('#old_service_name').html($(anchor).data('service-name'));
-          $('#old_service_id').val($(anchor).data('id-service'));
+          $('#old_worker_id').val($(node).data('worker-id'));
+          $('#old_worker_message').html($(node).data('worker-name'));
+          $('#old_service_name').html($(node).data('service-name'));
+          $('#old_service_id').val($(node).data('id-service'));
         });
       });
       </script>
