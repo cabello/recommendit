@@ -83,9 +83,9 @@ ENGINE = InnoDB
 
 mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
 mysql_query("INSERT INTO service (name) VALUES ('Mecânico')");
-mysql_query("INSERT INTO service (name) VALUES ('Médico')");
+mysql_query("INSERT INTO service (name) VALUES ('Lava carros')");
 mysql_query("INSERT INTO service (name) VALUES ('Taxista')");
-mysql_query("INSERT INTO service (name) VALUES ('Dentista')");
+mysql_query("INSERT INTO service (name) VALUES ('Carreto')");
 
 
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188544320', '1')");

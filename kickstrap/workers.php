@@ -66,7 +66,7 @@ mysql_connect(
 
 mysql_select_db($db);
 
-$servs = mysql_query("SELECT * FROM service");
+$servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
@@ -92,7 +92,7 @@ if ($servs) {
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
                     $answer = file_get_contents($query);
                     $answer = json_decode($answer, true);
-                    echo '<a href="#" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>';
+                    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>';
                 }
                 echo '    </div>';
                 echo '</div>';
@@ -209,7 +209,7 @@ if ($servs) {
 	  </script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $('.tooltip').tooltip();
+        $('.rating-comment').tooltip();
         $('.rating a').hover(rating, off);
         $('.rating a').click(rateIt);
         $('#add-new-worker').click(function() {
