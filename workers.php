@@ -343,7 +343,7 @@ function stars($rating) {
         $('.rating2 a').hover(rating, off);
         $('.rating2 a').click(rateIt);
         $('#add-new-comment').click(function() {
-          $.post('new_comment.php', $('#new-comment-form').serialize(), function(){
+          $.post('new_comment.php', $('.new-comment-form').serialize(), function(){
             $.jGrowl("Commentation added!")
           });
           $('#oldWorker').modal('hide');
@@ -360,7 +360,7 @@ function stars($rating) {
           $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
           $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
           $('#old_service_name').html($(e.target.parentNode).data('service-name'));
-          $('#old_service_id').val($(e.target.parentNode).data('service-id'));
+          $('#old_service_id').val($(e.target.parentNode).data('id-service'));
         });
       });
       </script>
