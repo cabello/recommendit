@@ -71,6 +71,27 @@ cookie     : true, // enable cookies to allow the server to access the session
 xfbml      : true,  // parse XFBML
 oauth      : true
 });
+
+  FB.getLoginStatus(function(response){
+    if(response.status === 'connected'){
+      $('.fb-login-button').hide();
+      $(".start").click(function(e){
+        $('.start').slideUp();
+        e.preventDefault();
+      });
+    } else {
+      $('.fb-login-button').fadeIn();
+      FB.Event.subscribe('auth.login', function(response) {
+        window.log(response);
+        if (response.authResponse) {
+          $('.fb-login-button').fadeOut();
+        } else {
+          window.log('User cancelled login or did not fully authorize.');
+        }
+      });
+    }
+  });
+
 };
 
 // Load the SDK Asynchronously
