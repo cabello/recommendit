@@ -136,7 +136,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $open_span6 = true;
   }
 
-  echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.stars($rec["rating"]).'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
+  echo '<a href="#" class="rating-comment" rel="tooltip" title="&nbsp;'.$rec["comment"].' '.stars($rec["rating"]).'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
 }
 
 if ($worker != null) {
