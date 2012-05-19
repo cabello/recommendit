@@ -94,7 +94,7 @@ if ($servs) {
       $q1 = "SELECT DISTINC worker.* FROM worker INNER JOIN recommendation ON (worker.id = recommendation.id_worker) WHERE id_service = $service_id AND recommendation.id_facebook IN {$friends_ids}";
       $works = mysql_query($q1);
 
-      $q2 = "SELECT * FROM worker INNER JOIN recommendation ON (worker.id = recommendation.id_worker) WHERE id_service = $service_id GROUP BY worker.id";
+      $q2 = "SELECT * FROM worker WHERE id_service = $service_id";
       $works2 = mysql_query($q2);
       echo "<pre>";
       while ($worker_debug = mysql_fetch_assoc($works2)) {
