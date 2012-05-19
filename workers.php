@@ -58,6 +58,14 @@ if ( ! $_SESSION['user_id']) {
 
   	</header>
 
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">recommendIt</a>
+        </div>
+      </div>
+    </div>
+
     <div role="main">
         <div class="row-fluid">
             <div class="span12">
