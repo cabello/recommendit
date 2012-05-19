@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -27,6 +26,15 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="extras/h5bp/js/libs/modernizr-2.5.3.min.js"></script>
+  <style type="text/css">
+  #rateStatus{float:left; margin-left: 4px;}
+  #rateMe{float:left; margin-left: 4px; height:auto;}
+  #rateMe li{float:left;list-style:none;}
+  #rateMe li a:hover,
+  #rateMe a{float:left;}
+  #ratingSaved{display:none;}
+  .saved{color:red; }
+  </style>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -43,74 +51,68 @@
 
     <div role="main">
         <div class="row-fluid">
-            <div class="span2">&nbsp;</div>
-            <div class="span8">
-              <div class="hero-unit">
-                <h1><i class="icon-list"></i> hacktoon</h1>
-                <h2>De amigo pra amigo.</h2>
-
-<div id="fb-root"></div>
-<script>
-<?php
-  $permittion_names = "read_friendlists";
-  $last_param = "_unique_are_you";
-
-  $app_secret = "51bb5cf55b06641f625a2e4f20e60334";
-  $app_id = "362571837137094";
-  $index_url = "http://fb-hacktoon.herokuapp.com/test/index.php";
-
-  $_SESSION["app_secret"] = $app_secret;
-  $_SESSION["app_id"] = $app_id;
-  $_SESSION["redirect_uri"] = $index_url;
-?>
-window.fbAsyncInit = function() {
-  FB.init({
-appId      : '<?php echo $app_id?>', // App ID
-status     : true, // check login status
-cookie     : true, // enable cookies to allow the server to access the session
-xfbml      : true,  // parse XFBML
-oauth      : true
-});
-
-  FB.getLoginStatus(function(response){
-    if(response.status === 'connected'){
-      $('.fb-login-button').hide();
-      $(".start").click(function(e){
-        $('.start').slideUp();
-        e.preventDefault();
-      });
-    } else {
-      $('.fb-login-button').fadeIn();
-      FB.Event.subscribe('auth.login', function(response) {
-        if (response.authResponse) {
-          $('.fb-login-button').fadeOut();
-          document.location = 'workers.php';
-        } else {
-          console.log('User cancelled login or did not fully authorize.');
-        }
-      });
-    }
-  });
-
-};
-
-// Load the SDK Asynchronously
-(function(d){
- var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
- js = d.createElement('script'); js.id = id; js.async = true;
- js.src = "//connect.facebook.net/en_US/all.js";
- d.getElementsByTagName('head')[0].appendChild(js);
- }(document));
-</script>
-
-              </div>
+            <div class="span12">
+              <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#myModal"></a></h2>
+                  <div class="row-fluid row-recommendation">
+                    <div class="span6">Silmara - (11) 1122 3344 <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>
+                    <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D <span class='icon-star'></span> <span class='icon-star'></span>"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
+                  </div>
+                  <div class="row-fluid row-recommendation">
+                    <div class="span6">Elaine - (11) 1122 3344 <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span></div>
+                    <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
+                  </div>
             </div><!--/span-->
-            <div class="span2">&nbsp;</div>
-        </div><!--/row-fluid-->
+      </div><!--/row-fluid-->
 
-        <div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
+      <div class="modal fade" id="myModal">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h3>Diarista</h3>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline">
+            <input type="text" class="input-large name" placeholder="Name" />
+            <input type="text" class="input-small" placeholder="Phone" />
+            <input type="hidden" name="rating" id="rating" />
+              <div id="rateMe" title="Rate Me..." class="rating">
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus"></span>
+                <span id="ratingSaved">Rating Saved!</span>
+              </div>
 
-        <hr>
+
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" data-dismiss="modal">Recomendar</a>
+        </div>
+      </div>
+
+      <div class="modal fade" id="oldWorker">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h3>Diarista</h3>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline">
+            <p class="rating">
+              Silmara avaliada com
+              <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
+            </p>
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" data-dismiss="modal">Adicionar comentário</a>
+        </div>
+      </div>
+
+      <hr>
 
         <div class="container">
             <footer style="text-align: center">
@@ -142,10 +144,11 @@ oauth      : true
 	  <!--script type="text/javascript" src="js/bootstrap-popover.min.js"></script-->
 	  <!--script type="text/javascript" src="js/bootstrap-scrollspy.min.js"></script-->
 	  <!--script type="text/javascript" src="js/bootstrap-tab.min.js"></script-->
-	  <!--script type="text/javascript" src="js/bootstrap-tooltip.min.js"></script-->
+	  <!--<script type="text/javascript" src="js/bootstrap-tooltip.min.js"></script>-->
 	  <!--script type="text/javascript" src="js/bootstrap-transition.min.js"></script-->
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
+    <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
 
 	  <!-- end scripts -->
 
@@ -158,6 +161,13 @@ oauth      : true
 
 	    });
 	  </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.tooltip').tooltip();
+        $('.rating a').hover(rating, off);
+        $('.rating a').click(rateIt);
+      });
+      </script>
 	  <script>
 	    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
