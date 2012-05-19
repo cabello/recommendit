@@ -27,6 +27,24 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="extras/h5bp/js/libs/modernizr-2.5.3.min.js"></script>
+    <style type="text/css">
+.start {
+  padding: 20px;
+  margin: 0 auto;
+  font-size: 30pt;
+  font-family: 'Rancho', cursive;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  background: #eee;
+  border-bottom: none;
+  display: none;
+}
+
+.start:hover {
+  background: #efefef;
+}
+  </style>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -107,7 +125,7 @@ oauth      : true
         </div><!--/row-fluid-->
 
         <div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
-
+        <a href='#' class='start'>let's find out</a>
         <hr>
 
         <div class="container">
