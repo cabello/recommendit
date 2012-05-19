@@ -196,7 +196,7 @@ function stars($rating) {
                 <a title="ehh..." class="icon-star-empty" data-rating="1"></a>
                 <a title="Not Bad" class="icon-star-empty" data-rating="2"></a>
                 <a title="Pretty Good" class="icon-star-empty" data-rating="3"></a>
-                <a title="Out Standing" class="icon-star-empty" data-rating="4"></a>
+                <a title="Outstanding" class="icon-star-empty" data-rating="4"></a>
                 <a title="Freakin' Awesome!" class="icon-star-empty" data-rating="5"></a>
                 <span id="rateStatus" class="rateStatus"></span>
                 <span id="ratingSaved" class="rateSaved"></span>
@@ -257,7 +257,7 @@ function stars($rating) {
                 <a title="ehh..." class="icon-star-empty" data-rating="1"></a>
                 <a title="Not Bad" class="icon-star-empty" data-rating="2"></a>
                 <a title="Pretty Good" class="icon-star-empty" data-rating="3"></a>
-                <a title="Out Standing" class="icon-star-empty" data-rating="4"></a>
+                <a title="Outstanding" class="icon-star-empty" data-rating="4"></a>
                 <a title="Freakin' Awesome!" class="icon-star-empty" data-rating="5"></a>
                 <span id="rateStatus2" class="rateStatus"></span>
                 <span id="ratingSaved2" class="rateSaved"></span>
