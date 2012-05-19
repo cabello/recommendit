@@ -92,7 +92,7 @@ if ($servs) {
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
                     $answer = file_get_contents($query);
                     $answer = json_decode($answer, true);
-                    echo '<a href="#" class="tooltip" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>"';
+                    echo '<a href="#" class="tooltip" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>';
                 }
                 echo '    </div>';
                 echo '</div>';
