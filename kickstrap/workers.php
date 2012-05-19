@@ -182,7 +182,7 @@ function stars($rating) {
                 <a id="_4" title="Out Standing" class="icon-star-empty"></a>
                 <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
                 <span id="rateStatus"></span>
-                <span id="ratingSaved">Rating Saved!</span>
+                <span id="ratingSaved"></span>
               </div>
 
             <input type="hidden" name="id_service" id="new-worker-id_service" value="1" />
@@ -190,7 +190,7 @@ function stars($rating) {
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recommending</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recommend</a>
         </div>
       </div>
 
@@ -276,6 +276,8 @@ function stars($rating) {
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
+        }, function() {
+          window.location.reload();
         });
         $('.service-name a').click(function(e) {
           $('#new-worker-id_service').val($(e.target).data('id-service'));
