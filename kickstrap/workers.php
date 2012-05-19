@@ -80,6 +80,7 @@ foreach ($data["data"] as $item) {
 }
 
 echo '<pre>';
+echo 'data';
 print_r($data);
 print_r($friends_ids);
 print_r($pictures);
