@@ -49,6 +49,7 @@
                 <h1><i class="icon-list"></i> hacktoon</h1>
                 <h2>De amigo pra amigo.</h2>
 
+                <p style="text-align: center"><a class="btn btn-primary btn-large" id="roll" style="display:none;" href="workers.php">Lets roll &raquo;</a></p>
 <div id="fb-root"></div>
 <script>
 <?php
@@ -75,13 +76,13 @@ oauth      : true
   FB.getLoginStatus(function(response){
     if(response.status === 'connected'){
       $('.fb-login-button').hide();
-      document.location = 'workers.php';
+      $('#roll').fadeIn();
     } else {
       $('.fb-login-button').fadeIn();
       FB.Event.subscribe('auth.login', function(response) {
         if (response.authResponse) {
           $('.fb-login-button').fadeOut();
-          document.location = 'workers.php';
+          $('#roll').fadeIn();
         } else {
           console.log('User cancelled login or did not fully authorize.');
         }
