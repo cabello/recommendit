@@ -93,10 +93,7 @@ oauth      : true
   FB.getLoginStatus(function(response){
     if(response.status === 'connected'){
       $('.fb-login-button').hide();
-      $(".start").click(function(e){
-        $('.start').slideUp();
-        e.preventDefault();
-      });
+      document.location = 'workers.php';
     } else {
       $('.fb-login-button').fadeIn();
       FB.Event.subscribe('auth.login', function(response) {
