@@ -89,10 +89,10 @@ mysql_query("INSERT INTO service (name) VALUES ('Dentista')");
 
 
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188544320', '1')");
-mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Mr. Anderson', '1185443312', '2')");
-mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Dr. Evil', '1197552328', '3')");
-mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Jonny_boy', '12846d3024', '4')");
-mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Cyntia', '1185355322', '5')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Mr. Anderson', '1185443312', '11')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Dr. Evil', '1197552328', '21')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Jonny_boy', '12846d3024', '31')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Cyntia', '1185355322', '41')");
 
 
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '501050133', '1', '4', 'Gosto muito dela')");
