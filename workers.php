@@ -276,6 +276,8 @@ function stars($rating) {
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
+        }, function() {
+           $.jGrowl("Recommendation added!");
         });
         $('.service-name a').click(function(e) {
           $('#new-worker-id_service').val($(e.target).data('id-service'));
