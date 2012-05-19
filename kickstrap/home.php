@@ -65,7 +65,7 @@
 ?>
 window.fbAsyncInit = function() {
   FB.init({
-appId      : <?$app_id?>, // App ID
+appId      : '<?php echo $app_id?>', // App ID
 status     : true, // check login status
 cookie     : true, // enable cookies to allow the server to access the session
 xfbml      : true  // parse XFBML
@@ -86,7 +86,7 @@ xfbml      : true  // parse XFBML
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 <?php
-//header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
+header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
 ?>
 </p>
 
