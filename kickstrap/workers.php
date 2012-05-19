@@ -68,7 +68,7 @@ $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
-$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture";
+$query = "https://graph.facebook.com/501050133/friends?fields=id,picture";
 $response = file_get_contents($query);
 echo '<pre>';
 print_r($response);
@@ -115,12 +115,12 @@ if ($servs) {
                 }
                 echo '</a></div>';
                 echo '    <div class="span6">';
-                while ($rec_i = mysql_fetch_assoc($recs)) {
+                /*while ($rec_i = mysql_fetch_assoc($recs)) {
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
                     $answer = file_get_contents($query);
                     $answer = json_decode($answer, true);
                     echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>';
-                }
+                }*/
                 echo '    </div>';
                 echo '</div>';
 
