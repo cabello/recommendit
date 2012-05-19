@@ -103,12 +103,12 @@ oauth      : true
  }(document));
 </script>
 
-<div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
-
               </div>
             </div><!--/span-->
             <div class="span2">&nbsp;</div>
         </div><!--/row-fluid-->
+
+        <div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
 
         <hr>
 
