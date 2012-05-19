@@ -29,9 +29,8 @@ if (isset($_SESSION["token"])) {
 	$user_data = json_decode($answer);
 
 	var_dump($user_data);
-	foreach($user_data as $xx => $yy) {
-		echo "[".$xx."]=>[".$yy."]<br />";
-	}
+
+	var_dump($user_data["id"]);
 	echo "ID: ".$user_data["id"]."<br />";
 
 	$_SESSION["user_id"] = $user_data["id"];
