@@ -88,11 +88,11 @@ ENGINE = InnoDB
 ');
 
 echo '1';
-mysql_query("INSERT INTO service (name) VALUES ('Maid')");
+mysql_query("INSERT INTO service (name) VALUES ('Housemaid')");
 mysql_query("INSERT INTO service (name) VALUES ('Mechanical')");
 mysql_query("INSERT INTO service (name) VALUES ('Car wash')");
 mysql_query("INSERT INTO service (name) VALUES ('Taxi driver')");
-mysql_query("INSERT INTO service (name) VALUES ('Mudança')");
+mysql_query("INSERT INTO service (name) VALUES ('Movers')");
 
 echo '2';
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara',  '1188541320', '1')");
