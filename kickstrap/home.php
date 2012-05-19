@@ -76,14 +76,15 @@ oauth      : true
 
   FB.getLoginStatus(function(response){
     if(response.status === 'connected'){
-      console.log(response);
       $('.fb-login-button').hide();
+      $.post('access.php', {'accessToken': response.authResponse.accessToken});
       $('#roll').fadeIn();
     } else {
       $('.fb-login-button').fadeIn();
       FB.Event.subscribe('auth.login', function(response) {
         if (response.authResponse) {
           $('.fb-login-button').fadeOut();
+          $.post('access.php', {'accessToken': response.authResponse.accessToken});
           $('#roll').fadeIn();
         } else {
           console.log('User cancelled login or did not fully authorize.');
