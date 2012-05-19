@@ -168,7 +168,7 @@ function stars($rating) {
       <div class="modal fade" id="modal-new-worker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
-          <h3 id="new-worker-service-name">Diarista</h3>
+          <h3 id="new-worker-service-name"></h3>
         </div>
         <div class="modal-body">
           <form class="form-inline" id='new-worker-form'>
@@ -197,7 +197,7 @@ function stars($rating) {
       <div class="modal fade" id="oldWorker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
-          <span id="old_service_name"></span>
+          <h3 id="old_service_name"></h3>
         </div>
         <div class="modal-body">
           <form class="form-inline">
@@ -282,6 +282,7 @@ function stars($rating) {
           $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
         $('.rate_old_worker').click(function(e){
+          console.log(e.);
           $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
           $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
           $('#old_service_name').html($(e.target.parentNode).data('service-name'));
