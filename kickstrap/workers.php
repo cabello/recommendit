@@ -53,7 +53,6 @@
     <div role="main">
         <div class="row-fluid">
             <div class="span12">
-              <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker"></a></h2>
                   <?php
 
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
