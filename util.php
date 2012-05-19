@@ -9,7 +9,7 @@ function phone_mask($mask,$string)
 }
 
 function remove_non_numeric($string) {
-	return preg_replace('/\D/', '', $string)
+	return preg_replace('/\D/', '', $string);
 }
 
 ?>
