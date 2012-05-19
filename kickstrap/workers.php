@@ -86,7 +86,7 @@ foreach ($data["data"] as $item) {
 };
 $friends_ids .= $_SESSION['user_id'].')';
 
-$q2 = "SELECT service.name service_name, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id, worker.id";
+$q2 = "SELECT service.name service_name, service.id service_id, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id, worker.id";
 $works2 = mysql_query($q2);
 if (! $works2) {
   echo "<pre>";
@@ -96,20 +96,36 @@ if (! $works2) {
 
 $service = null;
 $worker = null;
-while ($worker_debug = mysql_fetch_assoc($works2)) {
-  if ($service == null || $service != $worker_debug['service_name']) {
-    $service = $worker_debug['service_name'];
-    echo $service;
-    echo "<br />";
+while ($rec = mysql_fetch_assoc($works2)) {
+  if ($service == null || $service != $rec['service_name']) {
+    $service = $rec['service_name'];
+    echo '<h2 class="service-name">'.$rec["service_name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$rec['service_id'].'" data-service-name="'.$rec["service_name"].'"></a></h2>';
   }
 
-  if ($worker == null || $worker != $worker_debug['name']) {
-    $worker = $worker_debug['name'];
-    echo $worker;
-    echo "<br />";
+  if ($worker == null || $worker != $rec['name']) {
+    if ($worker != null) {
+      echo '    </div>';
+      echo '</div>';
+    }
+    $worker = $rec['name'];
+
+    echo '<div class="row-fluid row-recommendation">';
+    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a data-toggle="modal" href="#oldWorker">';
+    $rating = 3;
+    for ($i = 1; $i <= 5; $i++) {
+      if ($i <= $rating) {
+        echo '<span class="icon-star"></span>&nbsp';
+      } else {
+        echo '<span class="icon-star-empty"></span>&nbsp';
+      }
+    }
+    echo '</a></div>';
+    echo '    <div class="span6">';
+
+    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
   }
 
-  echo $worker_debug['comment'];
+  echo $rec['comment'];
   echo "<br />";
 }
 
