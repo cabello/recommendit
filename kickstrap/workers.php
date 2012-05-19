@@ -91,7 +91,7 @@ $works2 = mysql_query($q2);
 if (! $works2) {
   echo "<pre>";
   echo mysql_error();
-  echo "</pre>"
+  echo "</pre>";
 }
 
 $service = null;
