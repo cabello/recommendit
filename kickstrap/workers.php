@@ -1,5 +1,6 @@
 <?php session_start(); 
 require ('bd.php');
+require ('util.php')
 ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
@@ -76,9 +77,9 @@ if ($servs) {
           $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
           $x = mysql_fetch_assoc($q);
           $rating = floor($x["rating"]);
-
+          $mask = "(##)####-####";
                 echo '<div class="row-fluid row-recommendation">';
-                echo '    <div class="span6">'.$worker_i["name"].' - '.$worker_i["phone"].' <a data-toggle="modal" href="#oldWorker">';
+                echo '    <div class="span6">'.$worker_i["name"].' - '.phone_mask($mask,$worker_i["phone"]).' <a data-toggle="modal" href="#oldWorker">';
                 for ($i = 1; $i <= 5; $i++) {
                   if ($i <= $rating) {
                     echo '<span class="icon-star"></span>&nbsp';
