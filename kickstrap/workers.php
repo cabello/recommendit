@@ -122,7 +122,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
-    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a data-toggle="modal" href="#oldWorker">';
+    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" href="#oldWorker">';
     $rating = 3;
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
@@ -225,10 +225,11 @@ if ($worker != null) {
         <div class="modal-body">
           <form class="form-inline">
             <p class="rating">
-              Silmara avaliada com
+
               <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+            <input type="hidden" id="old_worker_id" name="id_worker" />
           </form>
         </div>
         <div class="modal-footer">
@@ -301,6 +302,10 @@ if ($worker != null) {
         $('.service-name a').click(function(e) {
           $('#new-worker-id_service').val($(e.target).data('id-service'));
           $('#new-worker-service-name').html($(e.target).data('service-name'));
+        });
+        $('.rate_old_worker').click(function(e){
+          $('.modal .rating').html($(e.target).data('worker-name'));
+          $('#old_worker_id').val($(e.target).data('worker-id'));
         });
       });
       </script>
