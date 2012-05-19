@@ -3,6 +3,8 @@ echo "here";
 $actual_code = $_GET["code"];
 //echo phpinfo();
 //var_dump($_GET);
+ini_set("display_errors", "1");
+error_reporting(E_ALL);
 
 if (isset($actual_code)) {
 	echo "INSIDE";
@@ -11,7 +13,8 @@ if (isset($actual_code)) {
 	$app_secret =	$_SESSION["app_secret"];
 
 	$url = "https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=$redirect_uri&client_secret=$app_secret&code=$actual_code";
-	ini_set('allow_url_fopen', true);
+	ini_set('allow_url_fopen', "on");
+
 //	$url = "hwww.google.com";
 	$answer = file_get_contents($url);	
 
