@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+require ('bd.php');
+?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -55,15 +57,6 @@
             <div class="span12">
                   <?php
 
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-mysql_connect(
-        $server = $url["host"],
-        $username = $url["user"],
-        $password = $url["pass"]);
-        $db=substr($url["path"],1);
-
-mysql_select_db($db);
 
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
