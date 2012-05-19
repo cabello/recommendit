@@ -27,6 +27,7 @@ if (isset($_SESSION["token"])) {
 	$answer = file_get_contents($query);
 	
 	$user_data = json_decode($answer);
+	$_SESSION["user_id"] = $user_data["id"];
 //	var_dump($user_data);
 
 
