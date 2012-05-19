@@ -43,23 +43,6 @@ if (count($_POST) > 0) {
   die();
 }
 ?>
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-
-<script>
-
-$.post(
-  'nosource/request', 
-  {
-    this: 'is the',
-    coolest: 'hack',
-    ever: '',
-  },
-  function(response) {
-    alert(response);
-  }
-);
-</script>
-
 
 
 <div>
