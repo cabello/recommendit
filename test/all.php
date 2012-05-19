@@ -16,8 +16,9 @@ mysql_select_db($db);
 
 $servs = mysql_query("SELECT * FROM service");
 $works = mysql_query("SELECT * FROM worker");
-$recs = mysql_query("SELECT * FROM recommendation");
+$recs = mysql_query("SELECT * FROM recommendation GROUP BY id");
 
+echo "Services:<br />";
 if ($servs) {
     echo "<ul>";
     while ($row = mysql_fetch_assoc($servs)) {
@@ -30,6 +31,7 @@ if ($servs) {
 
 echo "<hr />";
 
+echo "Workers:<br />";
 if ($works) {
     echo "<ul>";
     while ($row = mysql_fetch_assoc($works)) {
@@ -42,6 +44,7 @@ if ($works) {
 
 echo "<hr />";
 
+echo "Recommendations:<br />";
 if ($recs) {
     echo "<ul>";
     while ($row = mysql_fetch_assoc($recs)) {
