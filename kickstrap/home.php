@@ -27,24 +27,6 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="extras/h5bp/js/libs/modernizr-2.5.3.min.js"></script>
-    <style type="text/css">
-.start {
-  padding: 20px;
-  margin: 0 auto;
-  font-size: 30pt;
-  font-family: 'Rancho', cursive;
-  border-radius: 10px;
-  width: 400px;
-  text-align: center;
-  background: #eee;
-  border-bottom: none;
-  display: none;
-}
-
-.start:hover {
-  background: #efefef;
-}
-  </style>
 </head>
 <body>
 
@@ -68,6 +50,7 @@
                 <h1><i class="icon-list"></i> hacktoon</h1>
                 <h2>De amigo pra amigo.</h2>
 
+                <p style="text-align: center"><a class="btn btn-primary btn-large" id="roll" style="display:none;" href="workers.php">Lets roll &raquo;</a></p>
 <div id="fb-root"></div>
 <script>
 <?php
@@ -94,13 +77,13 @@ oauth      : true
   FB.getLoginStatus(function(response){
     if(response.status === 'connected'){
       $('.fb-login-button').hide();
-      document.location = 'workers.php';
+      $('#roll').fadeIn();
     } else {
       $('.fb-login-button').fadeIn();
       FB.Event.subscribe('auth.login', function(response) {
         if (response.authResponse) {
           $('.fb-login-button').fadeOut();
-          document.location = 'workers.php';
+          $('#roll').fadeIn();
         } else {
           console.log('User cancelled login or did not fully authorize.');
         }
