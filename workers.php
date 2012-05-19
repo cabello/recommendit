@@ -214,8 +214,6 @@ function stars($rating) {
 
 		      <div id='fb-root'></div>
 		      <script src='http://connect.facebook.net/en_US/all.js'></script>
-		      <p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
-		      <p id='msg'></p>
 
 		      <script>
 
