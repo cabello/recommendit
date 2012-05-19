@@ -8,31 +8,6 @@
 // Nome, telefone, rating, comment
 ?>
 
-<?php
-if (count($_POST) > 0) {
-  print json_encode($_POST);
-  die();
-}
-?>
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-
-<script>
-
-$.post(
-  'nosource/request', 
-  {
-    this: 'is the',
-    coolest: 'hack',
-    ever: '',
-  },
-  function(response) {
-    alert(response);
-  }
-);
-</script>
-
-
-
 
 
 
@@ -62,13 +37,30 @@ error_reporting(E_ALL);
 ?>
 
 
+<?php
+if (count($_POST) > 0) {
+  print json_encode($_POST);
+  die();
+}
+?>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+<script>
+
+$.post(
+  'nosource/request', 
+  {
+    this: 'is the',
+    coolest: 'hack',
+    ever: '',
+  },
+  function(response) {
+    alert(response);
+  }
+);
+</script>
 
 
-<html>
-
-<head>
-</head>
-<body>
 
 <div>
 	<form name="add_new" action="#" method="post">
@@ -80,5 +72,3 @@ error_reporting(E_ALL);
 		<input type="submit" value="Submit" />
 	</form>
 </div>
-</body>
-</html>
