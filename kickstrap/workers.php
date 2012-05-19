@@ -134,7 +134,7 @@ if ($servs) {
                 <span id="ratingSaved">Rating Saved!</span>
               </div>
 
-            <input type="hidden" name="new-worker-id_service" value="1" />
+            <input type="hidden" name="id_service" id="new-worker-id_service" value="1" />
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-worker-comment"></textarea>
           </form>
         </div>
