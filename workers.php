@@ -211,7 +211,7 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating" id="rating" />
+              <input type="hidden" name="rating" id="rating2" />
               <div id="rateMe" title="Rate Me..." class="rating">
                 <a id="_1" title="ehh..." class="icon-star-empty"></a>
                 <a id="_2" title="Not Bad" class="icon-star-empty"></a>
@@ -297,6 +297,8 @@ function stars($rating) {
            $.jGrowl("Recommendation added!");
         });
 
+        $('.rating2 a').hover(rating, off);
+        $('.rating2 a').click(rateIt);
         $('#add-new-comment').click(function() {
           $.post('new_comment.php', $('#new-comment-form').serialize());
           $('#oldWorker').modal('hide');
