@@ -70,6 +70,25 @@ $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
+$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture";
+$response = file_get_contents($query);
+$data = json_decode($response, true);
+$friends_ids = array();
+$pictures = array();
+
+foreach ($data["data"] as $item) {
+  $friends_ids[] = $item["id"];
+  $pictures[$item["id"]] = $item["picture"];
+}
+
+echo '<pre>';
+echo 'data';
+print_r($data);
+print_r($friends_ids);
+print_r($pictures);
+echo '</pre>';
+
+
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
 
