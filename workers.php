@@ -358,7 +358,7 @@ function stars($rating) {
         $('.rate_old_worker').click(function(e){
           node = $(e.target);
 
-          if ( ! node.data('worker-id') {
+          if ( ! node.data('worker-id')) {
             node = node.parentsUntil('a');
           }
           console.log(node);
