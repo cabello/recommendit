@@ -119,7 +119,7 @@ oauth      : true
                 <p><i class="icon-github-sign"></i> crafted in 24 hours during facebook@brazil hackathon 2012</p>
             </footer>
           </div>
-        </div>
+        
 
 	  <!-- JavaScript at the bottom for fast page loading -->
 
