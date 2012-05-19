@@ -70,6 +70,10 @@ $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FRO
 
 $query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture";
 $response = file_get_contents($query);
+echo '<pre>';
+print_r($response);
+echo '</pre>';
+
 $data = json_decode($response, true);
 $friends_ids = array();
 $pictures = array();
@@ -80,8 +84,6 @@ foreach ($data["data"] as $item) {
 }
 
 echo '<pre>';
-echo 'data';
-print_r($data);
 print_r($friends_ids);
 print_r($pictures);
 echo '</pre>';
