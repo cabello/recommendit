@@ -50,7 +50,7 @@
                 <h1><i class="icon-list"></i> hacktoon</h1>
                 <h2>De amigo pra amigo.</h2>
 
-                <p style="text-align: center"><a class="btn btn-primary btn-large" id="roll" style="display:none;" href="workers.php">Lets roll &raquo;</a></p>
+                <p style="text-align: center; padding: 25px;"><a class="btn btn-primary btn-large" id="roll" style="display:none;" href="workers.php">Lets roll &raquo;</a></p>
 <div id="fb-root"></div>
 <script>
 <?php
