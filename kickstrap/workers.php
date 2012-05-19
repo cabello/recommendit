@@ -1,7 +1,12 @@
-<?php session_start(); 
+<?php session_start();
 require ('bd.php');
-require ('util.php')
+require ('util.php');
+
+if ( ! $_SESSION['user_id']) {
+  header('Location: index.php');
+}
 ?>
+
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -218,6 +223,9 @@ if ($servs) {
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
+        });
+        $('.service-name a').click(function(e) {
+          console.log(e);
         });
       });
       </script>
