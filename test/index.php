@@ -23,7 +23,7 @@ error_reporting(E_ALL);
 
 }*/
 if (isset($_SESSION["token"])) {
-	$query = "https://graph.facebook.com/me?".$_SESSION["token"];
+	$query = "https://graph.facebook.com/me?access_token=".$_SESSION["token"];
 	$answer = file_get_contents($query);
 
 	$user_data = json_decode($answer, true);
@@ -42,7 +42,7 @@ if (isset($_SESSION["token"])) {
 	echo "Photo query: ".$query."<br />";
 
 	echo "<img src='".$answer["picture"]."'/><br />";
-	$query = "https://graph.facebook.com/me/friends?".$_SESSION["token"];
+	$query = "https://graph.facebook.com/me/friends?access_token=".$_SESSION["token"];
 	$answer = file_get_contents($query);
 	$friends = json_decode($answer);
 }
