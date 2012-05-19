@@ -1,5 +1,10 @@
-<?php session_start(); 
+<?php session_start();
 require ('bd.php');
+
+if ( ! $_SESSION['user_id']) {
+  header('Location: index.php');
+}
+
 ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
