@@ -92,10 +92,18 @@ if (! $works2) {
 $avgs = array();
 $avgs_query = "SELECT id_worker, avg(rating) avg_rating FROM recommendation WHERE id_facebook IN {$friends_ids} GROUP BY id_worker";
 $avgs_result = mysql_query($avgs_query);
+if (! $avgs_result) {
+  echo "<pre>";
+  echo mysql_error();
+  echo "</pre>";
+}
 while ($record = mysql_fetch_assoc($avgs_result)) {
   $avgs[$record['id_worker']] = $record['avg_rating'];
 }
 
+echo '<pre>';
+print_r($avgs);
+echo '</pre>';
 
 $mask = "(##) ####-####";
 
