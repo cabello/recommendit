@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	$_SESSION['user_id'] = 32;
 	
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 mysql_connect(
