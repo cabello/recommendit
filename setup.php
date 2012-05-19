@@ -163,9 +163,9 @@ mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rat
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('81', ".$vns.",    '31', '4', 'Good!')");
 
 echo '.';
-mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$marcos.", '41', '5', 'Great team')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('101', ".$marcos.", '41', '5', 'Great team')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$vns.", 	 '41', '4', 'I'd call him again!')");
-mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$pa.", 	 '41', '1', 'Sucked so bad')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('101', ".$pa.", 	 '41', '1', 'Sucked so bad')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$marcos.", '41', '5', 'Not bad..')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$vns.", 	 '41', '4', 'Very cheap!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('91', ".$pa.", 	 '41', '1', 'Ok..ok')");
