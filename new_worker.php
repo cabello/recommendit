@@ -12,10 +12,6 @@ if(count($_POST)){
     }
 }
 // TODO: Protect against SQL injection
-
-$urll = "https://www.facebook.com/dialog/feed?app_id=".$_SESSION["app_id"]."&link=https://developers.facebook.com/docs/reference/dialogs/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Using%20Dialogs%20to%20interact%20with%20users.&redirect_uri=http://www.example.com/response";
-
-header("location: $urll");
 ?>
 
 
