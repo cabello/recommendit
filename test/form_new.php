@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	
+	$_SESSION['user_id'] = 32;
 	
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 mysql_connect(
@@ -16,11 +16,9 @@ error_reporting(E_ALL);
 
 
 	if(isset($_POST['name'])){
-		$SQLQuery = "INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '2')";
 		echo $SQLQuery;
-		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '2')");
 		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '1')");
-		
+		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '."$_SESSION['user_id']".', '1', '4', 'Gosto muito dela')");
 	}
 
 ?>
