@@ -91,10 +91,10 @@ if ($servs) {
       echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'" data-service-name="'.$serv_i["name"].'"></a></h2>';
 
       $service_id = $serv_i["id"];
-      $q1 = "SELECT DISTINC worker.* FROM worker INNER JOIN recommendation ON (worker.id = recommendation.id_worker) WHERE id_service = $service_id AND recommendation.id_facebook IN {$friends_ids}";
+      $q1 = "SELECT * FROM worker WHERE id_service = $service_id";
       $works = mysql_query($q1);
 
-      $q2 = "SELECT * FROM worker WHERE id_service = $service_id";
+      $q2 = "SELECT * FROM worker INNER JOIN recommendation ON (worker.id = recommendation.id_worker) WHERE id_service = $service_id";
       $works2 = mysql_query($q2);
       echo "<pre>";
       while ($worker_debug = mysql_fetch_assoc($works2)) {
