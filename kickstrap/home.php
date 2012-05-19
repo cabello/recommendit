@@ -112,7 +112,9 @@ oauth      : true
 
         <div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
         <hr>
-        <div class="fb-like" data-href="http://fb-hacktoon.herokuapp.com/" style="text-align: center" data-send="true" data-width="100%" data-show-faces="true" data-font="segoe ui"></div>
+        <div style="width:100%; margin:auto">
+          <div class="fb-like" data-href="http://fb-hacktoon.herokuapp.com/" data-send="true" data-width="450" data-show-faces="true" data-font="segoe ui"></div>
+        </div>
           <div class="container">
             <footer style="text-align: center">
                 <p><i class="icon-github-sign"></i> crafted in 24 hours during facebook@brazil hackathon 2012</p>
