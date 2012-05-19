@@ -4,12 +4,14 @@ echo "here";
 $actual_code = $_GET["code"];
 //echo phpinfo();
 //var_dump($_GET);
-var_dump($_SESSION);
+//var_dump($_SESSION);
+
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
+
 if (isset($actual_code)) {
-	echo "INSIDE";
+//	echo "INSIDE";
 	$app_id = 	$_SESSION["app_id"];
 	$redirect_uri = $_SESSION["redirect_uri"];
 	$app_secret =	$_SESSION["app_secret"];
@@ -19,8 +21,9 @@ if (isset($actual_code)) {
 
 //	$url = "hwww.google.com";
 	$answer = file_get_contents($url);	
-
-	echo $answer."<br>";
+	preg_match("/acess_token=(.*?)\&/", $answer, $matches);
+	$token = $matches[0];
+	echo "[".$token."]<br>";
 }
 
 
