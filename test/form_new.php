@@ -18,8 +18,8 @@ error_reporting(E_ALL);
 
 	if(isset($_POST['name'])){
 		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '".$service."')");
-		echo mysql_insert_id();
-		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$service."', '".$_SESSION['user_id']."', '1', '".$_POST['rating']."', '".$_POST['comment']."')");
+		$new_id = mysql_insert_id();
+		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$new_id."', '".$_SESSION['user_id']."', '".$service."', '".$_POST['rating']."', '".$_POST['comment']."')");
 
 	}
 
