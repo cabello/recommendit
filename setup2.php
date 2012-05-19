@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 echo '-4';
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
@@ -113,7 +113,7 @@ mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Maria', '1184
 
 $vns = "100000425648853";
 $lucas = "100001263599179";
-$thiago = "100001086552469"
+$thiago = "100001086552469";
 $marcos = "1263110684";
 $carlos = "1051587225";
 $pa = "1389995798"; //rafael
