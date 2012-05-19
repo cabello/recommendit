@@ -19,6 +19,7 @@ error_reporting(E_ALL);
 		$SQLQuery = "INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '2')";
 		echo $SQLQuery;
 		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '2')");
+		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188544320', '1')");
 		
 	}
 
