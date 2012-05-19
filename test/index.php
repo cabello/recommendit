@@ -22,7 +22,7 @@ if (isset($actual_code)) {
 //	$url = "hwww.google.com";
 	$answer = file_get_contents($url);	
 	
-	$matches = explode($answer, "&");
+	$matches = explode("&", $answer);
 	var_dump($matches);
 	$token = $matches[0];
 	echo "[".$token."]<br>";
