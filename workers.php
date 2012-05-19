@@ -298,14 +298,14 @@ function stars($rating) {
         $('.rating a').hover(rating, off);
         $('.rating a').click(rateIt);
         $('#add-new-worker').click(function() {
-          $.post('new_worker.php', $('#new-worker-form').serialize());
+          $.post('new_worker.php', $('#new-worker-form').serialize(), function() {
+            $.jGrowl("Recommendation added!");
+          });
           $('#modal-new-worker').modal('hide');
           $('#new-worker-name').val('');
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
-        }, function() {
-           $.jGrowl("Recommendation added!");
         });
 
         $('.rating2 a').hover(rating, off);
