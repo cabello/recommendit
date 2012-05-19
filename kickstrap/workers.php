@@ -82,7 +82,7 @@ if ($servs) {
           $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
           $x = mysql_fetch_assoc($q);
           $rating = floor($x["rating"]);
-          $mask = "(##)####-####";
+          $mask = "(##) ####-####";
                 echo '<div class="row-fluid row-recommendation">';
                 echo '    <div class="span6">'.$worker_i["name"].' - '.phone_mask($mask,$worker_i["phone"]).' <a data-toggle="modal" href="#oldWorker">';
                 for ($i = 1; $i <= 5; $i++) {
