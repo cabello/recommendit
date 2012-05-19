@@ -40,9 +40,8 @@ if (isset($_SESSION["token"])) {
 	$answer = file_get_contents($query);
 	echo "Photo query: ".$query."<br />";
 
-	print_r($answer);
+	$answer = explode(":", $answer);
 	var_dump($answer);
-
 	echo "Answer:[".$answer["picture"]."]<br />";
 	echo "Answer:[".$answer[0]."]<br />";
 
