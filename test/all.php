@@ -31,7 +31,7 @@ if ($servs) {
 	$works = mysql_query($q1);
 	if ($works) {
     		while ($worker_i = mysql_fetch_assoc($works)) {
-			var_dump($worker_i);
+			//var_dump($worker_i);
 			$worker_id = $worker_i["id"];
 			$q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
 			$x = mysql_fetch_assoc($q);
