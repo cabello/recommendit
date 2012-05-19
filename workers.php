@@ -191,15 +191,15 @@ function stars($rating) {
           <form class="form-inline" id='new-worker-form'>
             <input type="text" class="input-large name" placeholder="Name" name="name" id="new-worker-name" />
             <input type="text" class="input-small" placeholder="Phone" name="phone" id="new-worker-phone" />
-            <input type="hidden" name="rating" id="rating" />
-              <div id="rateMe" title="Rate Me..." class="rating">
-                <a id="_1" title="ehh..." class="icon-star-empty"></a>
-                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
-                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
-                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
-                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
-                <span id="rateStatus"></span>
-                <span id="ratingSaved"></span>
+              <div id="rateMe" title="Rate Me..." class="rating rateMe">
+                <input type="hidden" name="rating" id="rating" />
+                <a title="ehh..." class="icon-star-empty" data-rating="1"></a>
+                <a title="Not Bad" class="icon-star-empty" data-rating="2"></a>
+                <a title="Pretty Good" class="icon-star-empty" data-rating="3"></a>
+                <a title="Out Standing" class="icon-star-empty" data-rating="4"></a>
+                <a title="Freakin' Awesome!" class="icon-star-empty" data-rating="5"></a>
+                <span id="rateStatus" class="rateStatus"></span>
+                <span id="ratingSaved" class="rateSaved"></span>
               </div>
 
             <input type="hidden" name="id_service" id="new-worker-id_service" value="1" />
@@ -220,15 +220,15 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating" id="rating2" />
-              <div id="rateMe2" title="Rate Me..." class="rating">
-                <a id="_1" title="ehh..." class="icon-star-empty"></a>
-                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
-                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
-                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
-                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
-                <span id="rateStatus2"></span>
-                <span id="ratingSaved2"></span>
+              <div id="rateMe2" title="Rate Me..." class="rating rateMe">
+                <input type="hidden" name="rating" id="rating2" />
+                <a title="ehh..." class="icon-star-empty" data-rating="1"></a>
+                <a title="Not Bad" class="icon-star-empty" data-rating="2"></a>
+                <a title="Pretty Good" class="icon-star-empty" data-rating="3"></a>
+                <a title="Out Standing" class="icon-star-empty" data-rating="4"></a>
+                <a title="Freakin' Awesome!" class="icon-star-empty" data-rating="5"></a>
+                <span id="rateStatus2" class="rateStatus"></span>
+                <span id="ratingSaved2" class="rateSaved"></span>
               </div>
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-comment-comment"></textarea>
