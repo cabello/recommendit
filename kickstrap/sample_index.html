@@ -26,6 +26,15 @@
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="extras/h5bp/js/libs/modernizr-2.5.3.min.js"></script>
+  <style type="text/css">
+  #rateStatus{float:left; margin-left: 4px;}
+  #rateMe{float:left; margin-left: 4px; height:auto;}
+  #rateMe li{float:left;list-style:none;}
+  #rateMe li a:hover,
+  #rateMe a{float:left;}
+  #ratingSaved{display:none;}
+  .saved{color:red; }
+  </style>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -64,9 +73,17 @@
           <form class="form-inline">
             <input type="text" class="input-large name" placeholder="Name">
             <input type="text" class="input-small" placeholder="Phone">
-            <p class="rating">
-              <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
-            </p>
+              <div id="rateMe" title="Rate Me..." class="rating">
+                <a onclick="rateIt(this)" id="_1" title="ehh..." class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                <a onclick="rateIt(this)" id="_2" title="Not Bad" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                <a onclick="rateIt(this)" id="_3" title="Pretty Good" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                <a onclick="rateIt(this)" id="_4" title="Out Standing" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                <a onclick="rateIt(this)" id="_5" title="Freakin' Awesome!" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
+                <span id="rateStatus">Rate Me...</span>
+                <span id="ratingSaved">Rating Saved!</span>  
+              </div>
+        
+
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
           </form>
         </div>
@@ -111,6 +128,7 @@
 	  <!--script type="text/javascript" src="js/bootstrap-transition.min.js"></script-->
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
+    <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
 
 	  <!-- end scripts -->
 
