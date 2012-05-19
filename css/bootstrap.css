@@ -6078,7 +6078,7 @@ li[class*=" icomoon-"].icon-large:before {
 .row-recommendation {
   line-height: 58px;
 }
-.row-recommendation:hover {
+.row-recommendation a:hover {
   text-decoration: none;
 }
 .service-name {
