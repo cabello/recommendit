@@ -211,7 +211,7 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating" id="rating2" />
+              <input type="hidden" name="rating2" id="rating2" />
               <div id="rateMe" title="Rate Me..." class="rating">
                 <a id="_1" title="ehh..." class="icon-star-empty"></a>
                 <a id="_2" title="Not Bad" class="icon-star-empty"></a>
