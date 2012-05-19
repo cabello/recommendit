@@ -15,7 +15,6 @@ error_reporting(E_ALL);
 
 
 	if(isset($_POST['name'])){
-		echo $SQLQuery;
 		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '1')");
 		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '213231321231', '1', '4', 'Gosto muito dela')");
 	}
