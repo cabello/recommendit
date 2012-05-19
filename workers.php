@@ -229,6 +229,7 @@ function stars($rating) {
     					picture: 'http://fbrell.com/f8.jpg',
     					name: 'Facebook - RecommendIt',
     					caption: '',
+					message: 'Check out my new recommendation on RecommendIt!',
     					description: 'Share your recommendations, help your friends!'
 			      };
 
