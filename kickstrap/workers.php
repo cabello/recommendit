@@ -101,10 +101,6 @@ while ($record = mysql_fetch_assoc($avgs_result)) {
   $avgs[$record['id_worker']] = $record['avg_rating'];
 }
 
-echo '<pre>';
-print_r($avgs);
-echo '</pre>';
-
 $mask = "(##) ####-####";
 
 $open_span7 = false;
@@ -133,9 +129,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
-    echo "id: {$rec['id']}";
-    echo "avg: {$avgs[$rec['id']]}";
-    $rating = $avgs[$rec['id']];
+    $rating = $avgs[$rec['id_worker']];
     echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
