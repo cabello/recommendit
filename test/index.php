@@ -1,8 +1,10 @@
 <?
+session_start();
 echo "here";
 $actual_code = $_GET["code"];
 //echo phpinfo();
 //var_dump($_GET);
+var_dump($_SESSION);
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
