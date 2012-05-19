@@ -13,12 +13,8 @@ mysql_select_db($db);
 
 
 
-$servs = mysql_query("SELECT * FROM service");
-$works = mysql_query("SELECT * FROM worker");
-$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id");
-
 	if(isset($_POST['name'])){
-		$SQLQuery = "INSERT INTO worker (name, phone, id_service) VALUES (".$_POST['name'].", ".$_POST['telephone'].", 2)";
+		$SQLQuery = "INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', 2)";
 		echo $SQLQuery;
 		mysql_query($SQLQuery);
 		
