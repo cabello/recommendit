@@ -31,6 +31,9 @@ function rating(e){
 function off(e){
 	node = $(e.target);
 
+	node.addClass('icon-star-empty');
+	node.removeClass('icon-star');
+
 	node.siblings('a').each(function(i, element) {
 		element = $(element);
 		element.removeClass('icon-star');
@@ -51,7 +54,7 @@ function rateIt(e){
 // Send the rating information somewhere using Ajax or something like that.
 function sendRate(node){
 	node.siblings('[name="rating"]').val(node.data('rating'));
-	rated = number;
+	rated = node.data('rating');
 }
 
 function resetRate() {
