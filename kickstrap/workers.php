@@ -72,13 +72,15 @@ $query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,
 $response = file_get_contents($query);
 
 $data = json_decode($response, true);
-$friends_ids = array();
 $pictures = array();
 
+$friends_ids = '(';
 foreach ($data["data"] as $item) {
-  $friends_ids[] = $item["id"];
+  $friends_ids .= $item["id"] . ',';
   $pictures[$item["id"]] = $item["picture"];
 }
+$friends_ids = substr($friends_ids, 0, strlen($friends_ids) - 1);
+$friends_ids .= ')';
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
@@ -112,7 +114,7 @@ if ($servs) {
                 echo '    </div>';
                 echo '</div>';
 
-          $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id");
+          $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id AND id_facebok IN {$friends_ids}");
         }
       }
     }
