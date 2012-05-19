@@ -133,6 +133,8 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
+    echo "{$rec['id']}";
+    echo "{$avgs[$rec['id']]}";
     $rating = $avgs[$rec['id']];
     echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'"href="#oldWorker">';
     for ($i = 1; $i <= 5; $i++) {
