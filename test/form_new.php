@@ -1,7 +1,25 @@
 <?php
-
-		echo $_POST['name']." ".$_POST['telephone']." ".$_POST['rating']." ".$_POST['comment'];
+	session_start();
 	
+	
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+mysql_connect(
+        $server = $url["host"],
+        $username = $url["user"],
+        $password = $url["pass"]);
+        $db=substr($url["path"],1);
+
+mysql_select_db($db);
+
+
+
+$servs = mysql_query("SELECT * FROM service");
+$works = mysql_query("SELECT * FROM worker");
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id");
+
+	if(isset($_POST['name']){
+		echo $_POST['name']." ".$_POST['telephone']." ".$_POST['rating']." ".$_POST['comment'];
+	}
 
 ?>
 
