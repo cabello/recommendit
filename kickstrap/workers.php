@@ -98,6 +98,11 @@ $service = null;
 $worker = null;
 while ($rec = mysql_fetch_assoc($works2)) {
   if ($service == null || $service != $rec['service_name']) {
+    if ($service != null) {
+      echo '    </div>';
+      echo '</div>';
+    }
+
     $service = $rec['service_name'];
     echo '<h2 class="service-name">'.$rec["service_name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$rec['service_id'].'" data-service-name="'.$rec["service_name"].'"></a></h2>';
   }
@@ -107,6 +112,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
       echo '    </div>';
       echo '</div>';
     }
+
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
@@ -124,6 +130,11 @@ while ($rec = mysql_fetch_assoc($works2)) {
   }
 
   echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
+}
+
+if ($worker != null) {
+  echo '    </div>';
+  echo '</div>';
 }
 
 if ($servs) {
