@@ -60,7 +60,7 @@ require ('bd.php');
 
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
-$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
+$recs = mysql_query("SELECT id, id_facebook, id_worker, floor(avg(rating)), comment FROM recommendation GROUP BY id_worker");
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
