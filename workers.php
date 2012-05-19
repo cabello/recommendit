@@ -343,7 +343,9 @@ function stars($rating) {
         $('.rating2 a').hover(rating, off);
         $('.rating2 a').click(rateIt);
         $('#add-new-comment').click(function() {
-          $.post('new_comment.php', $('#new-comment-form').serialize());
+          $.post('new_comment.php', $('#new-comment-form').serialize(), function(){
+            $.jGrowl("Commentation added!")
+          });
           $('#oldWorker').modal('hide');
           $('#new-comment-comment').val('');
           resetRate();
