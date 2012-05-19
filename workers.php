@@ -207,8 +207,19 @@ function stars($rating) {
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recommend</a>
-        </div>
+	<a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recommend</a>
+	<script src="http://connect.facebook.net/en_US/all.js">
+	</script>
+	<script>
+	FB.init({ 
+appId:'YOUR_APP_ID', cookie:true, 
+status:true, xfbml:true 
+});
+
+FB.ui({ method: 'feed', 
+		message: 'Facebook for Websites is super-cool'});
+</script>
+</div>
       </div>
 
       <div class="modal fade" id="oldWorker">
