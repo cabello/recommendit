@@ -1,5 +1,5 @@
 <?php
-
+echo '-4';
 ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
@@ -12,6 +12,7 @@ mysql_connect(
         $db=substr($url["path"],1);
 
 mysql_select_db($db);
+echo '-3';
 
 $result = mysql_query('DROP TABLES recommendation');
 if (! $result) {
@@ -31,7 +32,7 @@ if (! $result) {
   $message .= 'Whole query: ' . $query;
   echo $message;
 }
-
+echo '-2';
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `service` (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -41,6 +42,7 @@ CREATE  TABLE IF NOT EXISTS `service` (
 ENGINE = InnoDB
 ');
 
+echo '-1';
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `worker` (
   `id` INT NOT NULL AUTO_INCREMENT ,
@@ -57,6 +59,8 @@ CREATE  TABLE IF NOT EXISTS `worker` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 ');
+
+echo '0';
 
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `recommendation` (
