@@ -75,6 +75,7 @@ oauth      : true
 });
 
   FB.getLoginStatus(function(response){
+    console.log(response);
     if(response.status === 'connected'){
       $('.fb-login-button').hide();
       $.post('access.php', {'accessToken': response.authResponse.accessToken});

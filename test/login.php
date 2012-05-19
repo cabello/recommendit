@@ -1,6 +1,6 @@
 <?session_start();?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-xmlns:fb="https://www.facebook.com/2008/fbml"> 
+xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
 <title>OG Tutorial App</title>
 </head>
@@ -10,9 +10,9 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <?
 	$app_id = "362571837137094";
 	$index_url = "http://fb-hacktoon.herokuapp.com/test/index.php";
-	$permittion_names = "read_friendlists,read_insights";
+	$permittion_names = "read_friendlists";
 	$last_param = "_unique_are_you";
-	
+
 	$app_secret = "51bb5cf55b06641f625a2e4f20e60334";
 
 	$_SESSION["app_secret"] = $app_secret;
