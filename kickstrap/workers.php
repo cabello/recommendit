@@ -80,13 +80,10 @@ foreach ($data["data"] as $item) {
   $pictures[$item["id"]] = $item["picture"];
 };
 
-$query = "https://graph.facebook.com/me/picture?access_token=".$_SESSION["token"];
-$response = file_get_contents($query);
-echo '<pre>';
-print_r($response);
-echo '</pre>';
+$query = "https://graph.facebook.com/me?fields=picture&access_token=".$_SESSION["token"];
+$my_picture = file_get_contents($query);
 
-$pictures[$_SESSION['user_id']] = $response;
+$pictures[$_SESSION['user_id']] = $my_picture["picture"];
 $friends_ids .= $_SESSION['user_id'].')';
 
 if ($servs) {
