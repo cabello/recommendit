@@ -95,9 +95,6 @@ if ($servs) {
                 echo '</a></div>';
                 echo '    <div class="span6">';
                 while ($rec_i = mysql_fetch_assoc($recs)) {
-                    echo '<pre>';
-                    print_r($rec_i);
-                    echo '</pre>';
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
                     $answer = file_get_contents($query);
                     $answer = json_decode($answer, true);
