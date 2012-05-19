@@ -43,6 +43,15 @@ if ( ! $_SESSION['user_id']) {
   #rateMe a{float:left;}
   #ratingSaved{display:none;}
   .saved{color:red; }
+
+
+  #rateStatus2{float:left; margin-left: 4px;}
+  #rateMe2{float:left; margin-left: 4px; height:auto;}
+  #rateMe2 li{float:left;list-style:none;}
+  #rateMe2 li a:hover,
+  #rateMe2 a{float:left;}
+  #ratingSaved2{display:none;}
+
   </style>
 </head>
 <body>
@@ -211,15 +220,15 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating2" id="rating2" />
-              <div id="rateMe" title="Rate Me..." class="rating">
-                <a id="_6" title="ehh..." class="icon-star-empty"></a>
-                <a id="_7" title="Not Bad" class="icon-star-empty"></a>
-                <a id="_8" title="Pretty Good" class="icon-star-empty"></a>
-                <a id="_9" title="Out Standing" class="icon-star-empty"></a>
-                <a id="_10" title="Freakin' Awesome!" class="icon-star-empty"></a>
-                <span id="rateStatus"></span>
-                <span id="ratingSaved"></span>
+              <input type="hidden" name="rating" id="rating2" />
+              <div id="rateMe2" title="Rate Me..." class="rating">
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus2"></span>
+                <span id="ratingSaved2"></span>
               </div>
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-comment-comment"></textarea>
