@@ -37,7 +37,7 @@ if ($servs) {
 			$q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
 			$x = mysql_fetch_assoc($q);
 			$rating = $x["rating"];
-			echo $worker_i["nome"]." ".$worker_i["phone"]." ".$rating." ".$comments."<br />";
+			echo "Nome:".$worker_i["name"]." Phone:".$worker_i["phone"]." Rating:".$rating." Comments:".$comments.".<br />";
 		}
 	}
     }
