@@ -215,7 +215,7 @@ function stars($rating) {
             <script src="http://connect.facebook.net/en_US/all.js"></script>
 		       <script>
 			         FB.init({appId:<?php echo $_SESSION["app_id"];?>, cookie:true,status:true, xfbml:true  });
-			         FB.ui({ method: 'feed', message: 'Facebook for Websites is super-cool'});
+			         FB.ui({ method: 'feed', message: 'RecommendIt to your friends!'});
 		      </script>
 
 
