@@ -1,10 +1,7 @@
 <?php
 
-	if(isset($_POST['add_new'])){
-	
 		echo $_POST['name']." ".$_POST['telephone']." ".$_POST['rating']." ".$_POST['comment'];
 	
-	}
 
 ?>
 
