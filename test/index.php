@@ -24,10 +24,10 @@ if (isset($actual_code)) {
 }
 if (isset($_SESSION["token"])) {
 	$query = "https://graph.facebook.com/me?".$_SESSION["token"];
-	$answer = file_get_contents($query);	
+	$answer = file_get_contents($query);
 
 	
-	$user_data = explode ($answer, ",");
+	$user_data = explode (",", $answer);
 	
 	var_dump($user_data);
 	
