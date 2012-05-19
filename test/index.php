@@ -27,23 +27,30 @@ if (isset($_SESSION["token"])) {
 	$answer = file_get_contents($query);
 	
 	$user_data = json_decode($answer);
-	var_dump($user_data);
+	$_SESSION["user_id"] = $user_data["id"];
+//	var_dump($user_data);
 
 
 	$query = "https://graph.facebook.com/me/friends?".$_SESSION["token"];
 	$answer = file_get_contents($query);
 	$friends = json_decode($answer);
-	var_dump($friends);
+//	var_dump($friends);
 }
 
 
-
+$x = "<a href='all.php'>ALL HERE</a>";
+$y = "<a href='form_new.php'>ALL HERE</a>";
+$z = "<a href='form_eval.php'>ALL HERE</a>";
+echo "<br>";
+echo $x."<br>";
+echo $y."<br>";
+echo $z."<br>";
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
 xmlns:fb="https://www.facebook.com/2008/fbml"> 
 <head
-<title>OG Tutorial App</title>
+<title>Main App</title>
 </head>
 <body>
 <div id="fb-root"></div>
