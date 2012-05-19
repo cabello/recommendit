@@ -1,15 +1,7 @@
 <?php session_start(); ?>
 
 <?php
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-mysql_connect(
-        $server = $url["host"],
-        $username = $url["user"],
-        $password = $url["pass"]);
-        $db=substr($url["path"],1);
-
-mysql_select_db($db);
+require('bd.php');
 
 if(count($_POST)){
 	mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['phone']."', '".$_POST['id_service']."')");
