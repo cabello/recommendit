@@ -17,7 +17,7 @@ error_reporting(E_ALL);
 
 	if(isset($_POST['name'])){
 		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', '1')");
-		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '".$_SESSION['user_id']."', '1', '5', '".$_POST['comment']."')");
+		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '".$_SESSION['user_id']."', '1', '".$_POST['rating']."', '".$_POST['comment']."')");
 
 	}
 
@@ -31,10 +31,10 @@ error_reporting(E_ALL);
 
 <div>
 	<form name="add_new" action="#" method="post">
-		Nomee: <input type="text" name="name" /><br>
-		Telefone: <input type="text" name="telephone" /><br>
-		Rating: <input type="text" name="rating" /><br>
-		Comentario: <input type="text" name="comment" /><br>
+		Nomee: <input type="text" name="name" required="required" /><br>
+		Telefone: <input type="text" name="telephone" required="required" /><br>
+		Rating: <input type="text" name="rating" required="required" /><br>
+		Comentario: <input type="text" name="comment" required="required" /><br>
 		<input type="submit" value="Submit" />
 	</form>
 </div>
