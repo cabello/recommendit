@@ -6076,7 +6076,7 @@ li[class*=" icomoon-"].icon-large:before {
 }
 /* @end */
 .row-recommendation {
-  margin-bottom: 4px;
+  line-height: 58px;
 }
 .service-name {
   margin-bottom: 4px;
