@@ -80,9 +80,23 @@ CREATE  TABLE IF NOT EXISTS `recommendation` (
 ENGINE = InnoDB
 ');
 
+
 mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
-mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188553322', '1')");
+mysql_query("INSERT INTO service (name) VALUES ('Mecanico')");
+mysql_query("INSERT INTO service (name) VALUES ('Medico')");
+mysql_query("INSERT INTO service (name) VALUES ('Taxista')");
+mysql_query("INSERT INTO service (name) VALUES ('Dentista')");
+
+
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188544320', '1')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Mr. Anderson', '1185443312', '2')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Dr. Evil', '1197552328', '3')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Jonny_boy', '12846d3024', '4')");
+mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Cyntia', '1185355322', '5')");
+
+
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '501050133', '1', '4', 'Gosto muito dela')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '361759103', '1', '2', 'Robo minha grana')");
 
 echo "Done!";
 
