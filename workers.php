@@ -357,14 +357,9 @@ function stars($rating) {
         });
         $('.rate_old_worker').click(function(e){
           node = $(e.target);
-
-          console.log('before');
-          console.log(node);
           if ( ! node.data('worker-id')) {
-            node = node.parentsUntil('a');
+            node = node.parent('.rate_old_worker');
           }
-          console.log('after');
-          console.log(node);
 
           $('#old_worker_id').val($(node).data('worker-id'));
           $('#old_worker_message').html($(node).data('worker-name'));
