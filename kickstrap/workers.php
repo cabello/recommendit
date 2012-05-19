@@ -63,13 +63,7 @@ if ( ! $_SESSION['user_id']) {
             <div class="span12">
                   <?php
 
-// user stuff
-$friends_ids = '(';
-foreach ($data["data"] as $item) {
-  $friends_ids .= $item["id"] . ',';
-  $pictures[$item["id"]] = $item["picture"];
-};
-$friends_ids .= $_SESSION['user_id'].')';
+$pictures = array();
 
 $query = "https://graph.facebook.com/me?fields=picture&access_token=".$_SESSION["token"];
 $my_picture = json_decode(file_get_contents($query));
@@ -77,6 +71,20 @@ $pictures[$_SESSION['user_id']] = $my_picture->picture;
 
 // services
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
+
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
+
+$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture&access_token=".$_SESSION["token"];
+$response = file_get_contents($query);
+$data = json_decode($response, true);
+
+// user stuff
+$friends_ids = '(';
+foreach ($data["data"] as $item) {
+  $friends_ids .= $item["id"] . ',';
+  $pictures[$item["id"]] = $item["picture"];
+};
+$friends_ids .= $_SESSION['user_id'].')';
 
 $q2 = "SELECT * FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id";
 $works2 = mysql_query($q2);
@@ -88,16 +96,6 @@ while ($worker_debug = mysql_fetch_assoc($works2)) {
   print_r($worker_debug);
 }
 echo "</pre>";
-
-$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
-
-$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture&access_token=".$_SESSION["token"];
-$response = file_get_contents($query);
-
-$data = json_decode($response, true);
-$pictures = array();
-
-
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
