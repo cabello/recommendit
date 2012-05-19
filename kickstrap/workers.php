@@ -52,7 +52,7 @@
     <div role="main">
         <div class="row-fluid">
             <div class="span12">
-              <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#myModal"></a></h2>
+              <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker"></a></h2>
                   <div class="row-fluid row-recommendation">
                     <div class="span6">Silmara - (11) 1122 3344 <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>
                     <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D <span class='icon-star'></span> <span class='icon-star'></span>"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
@@ -64,15 +64,15 @@
             </div><!--/span-->
       </div><!--/row-fluid-->
 
-      <div class="modal fade" id="myModal">
+      <div class="modal fade" id="modal-new-worker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
           <h3>Diarista</h3>
         </div>
         <div class="modal-body">
-          <form class="form-inline">
-            <input type="text" class="input-large name" placeholder="Name" />
-            <input type="text" class="input-small" placeholder="Phone" />
+          <form class="form-inline" id='new-worker-form'>
+            <input type="text" class="input-large name" placeholder="Name" name="name" />
+            <input type="text" class="input-small" placeholder="Phone" name="phone" />
             <input type="hidden" name="rating" id="rating" />
               <div id="rateMe" title="Rate Me..." class="rating">
                 <a id="_1" title="ehh..." class="icon-star-empty"></a>
@@ -84,12 +84,12 @@
                 <span id="ratingSaved">Rating Saved!</span>
               </div>
 
-
-            <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+            <input type="hidden" name="id_service" value="1" />
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment"></textarea>
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal">Recomendar</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recomendar</a>
         </div>
       </div>
 
@@ -166,6 +166,14 @@
         $('.tooltip').tooltip();
         $('.rating a').hover(rating, off);
         $('.rating a').click(rateIt);
+        $('#add-new-worker').click(function() {
+          $.post('new_worker.php', $('#new-worker-form').serialize());
+          $('#modal-new-worker').modal('hide');
+          $('#name').val('');
+          $('#phone').val('');
+          $('#comment').val('');
+          rated = 0;
+        });
       });
       </script>
 	  <script>
