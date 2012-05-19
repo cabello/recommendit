@@ -15,20 +15,31 @@ mysql_select_db($db);
 
 
 $servs = mysql_query("SELECT * FROM service");
-$works = mysql_query("SELECT * FROM worker");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 //$recs = mysql_query("SELECT * FROM recommendation GROUP BY id");
 
-echo "Services:<br />";
+
 if ($servs) {
-    echo "<ul>";
-    while ($row = mysql_fetch_assoc($servs)) {
-        echo "<li>";
-        print_r($row);
-        echo "</li>";
+
+    while ($serv_i = mysql_fetch_assoc($servs)) {
+
+        echo $serv_i["name"]."<br />";
+
+	$service_id = $serv_i["id"];
+
+	$works = mysql_query("SELECT * FROM worker where id_service = service_id");
+
+	if ($works) {
+    		while ($worker_i = mysql_fetch_assoc($works)) {
+			$worker_id = $worker_i["id"];
+			$q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
+			$x = mysql_fetch_assoc($q);
+			$rating = $x["rating"];
+			echo $worker_i["nome"]." ".$worker_i["phone"]." ".$rating." ".$comments."<br />";
+		}
+	}
     }
-    echo "</ul>";
 }
 
 echo "<hr />";
