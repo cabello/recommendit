@@ -83,10 +83,7 @@ $friends_ids .= $_SESSION['user_id'].')';
 
 $query = "https://graph.facebook.com/me?fields=picture&access_token=".$_SESSION["token"];
 $my_picture = json_decode(file_get_contents($query));
-echo '<pre>';
-print_r($my_picture);
-echo '</pre>';
-$pictures[$_SESSION['user_id']] = $my_picture["picture"];
+$pictures[$_SESSION['user_id']] = $my_picture->picture;
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
