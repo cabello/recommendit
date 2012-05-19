@@ -5096,7 +5096,6 @@ body {
   height: 100%;
 }
 .container.main {
-  overflow: auto;
   padding-top: 3em;
   padding-bottom: 3em;
 }
