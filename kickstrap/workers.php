@@ -78,7 +78,7 @@ $pictures[$_SESSION['user_id']] = $my_picture->picture;
 // services
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
-$q2 = "SELECT * FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker ORDER BY service.name, service.id";
+$q2 = "SELECT * FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id";
 $works2 = mysql_query($q2);
 echo "<pre>";
 if (! $works2) {
