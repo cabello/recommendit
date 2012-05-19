@@ -6078,6 +6078,9 @@ li[class*=" icomoon-"].icon-large:before {
 .row-recommendation {
   line-height: 58px;
 }
+.row-recommendation:hover {
+  text-decoration: none;
+}
 .service-name {
   margin-bottom: 4px;
 }

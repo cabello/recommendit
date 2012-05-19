@@ -11,6 +11,9 @@ var rated;
 function rating(e){
 	node = $(e.target);
 
+	node.removeClass('icon-star-empty');
+	node.addClass('icon-star');
+
 	node.siblings('a').each(function(i, element) {
 		element = $(element);
 		if (element.data('rating') <= node.data('rating')) {
