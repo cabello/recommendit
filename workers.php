@@ -237,6 +237,7 @@ function stars($rating) {
 				      document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
 			      }
 			      FB.ui(obj, callback);
+            window.scrollTo(0);
 		      }
 
 </script>
