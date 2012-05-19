@@ -79,12 +79,11 @@ foreach ($data["data"] as $item) {
   $friends_ids .= $item["id"] . ',';
   $pictures[$item["id"]] = $item["picture"];
 };
+$friends_ids .= $_SESSION['user_id'].')';
 
 $query = "https://graph.facebook.com/me?fields=picture&access_token=".$_SESSION["token"];
-$my_picture = file_get_contents($query);
-
+$my_picture = json_decode(file_get_contents($query));
 $pictures[$_SESSION['user_id']] = $my_picture["picture"];
-$friends_ids .= $_SESSION['user_id'].')';
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
