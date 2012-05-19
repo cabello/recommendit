@@ -13,10 +13,14 @@ mysql_connect(
 mysql_select_db($db);
 
 
-$result = mysql_query("SELECT * FROM service");
-if ($result) {
+
+$servs = mysql_query("SELECT * FROM service");
+$works = mysql_query("SELECT * FROM worker");
+$recs = mysql_query("SELECT * FROM recommendation");
+
+if ($servs) {
     echo "<ul>";
-    while ($row = mysql_fetch_assoc($result)) {
+    while ($row = mysql_fetch_assoc($servs)) {
         echo "<li>";
         print_r($row);
         echo "</li>";
@@ -26,6 +30,28 @@ if ($result) {
 
 echo "<hr />";
 
+if ($works) {
+    echo "<ul>";
+    while ($row = mysql_fetch_assoc($works)) {
+        echo "<li>";
+        print_r($row);
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+
+echo "<hr />";
+
+if ($recs) {
+    echo "<ul>";
+    while ($row = mysql_fetch_assoc($recs)) {
+        echo "<li>";
+        print_r($row);
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+echo "<hr />";
 
 
 
