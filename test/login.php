@@ -6,10 +6,15 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <body>
 <div id="fb-root"></div>
 <script>
-
+<?
+	$app_id = "362571837137094";
+	$indel_url = "index.php";
+	$permittion_names = "read_friendlists";
+	$last_param = "_unique_are_you";
+?>
 window.fbAsyncInit = function() {
 	FB.init({
-appId      : 362571837137094, // App ID
+appId      : <?$app_id?>, // App ID
 status     : true, // check login status
 cookie     : true, // enable cookies to allow the server to access the session
 xfbml      : true  // parse XFBML
@@ -30,7 +35,11 @@ xfbml      : true  // parse XFBML
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 <?
-//	header('location: https://graph.facebook.com/me');
+	header("location: https://www.facebook.com/dialog/oauth?
+			    client_id= $app_id
+			       &redirect_uri= $index_url
+			          &scope= $permition_names
+				     &state=$last_param");
 ?>
 </p>
 </body>
