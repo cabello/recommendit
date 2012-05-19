@@ -27,7 +27,9 @@ error_reporting(E_ALL);
 
 
 	if(isset($_POST['name'])){
-		mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_POST['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['service']."', '".$_POST['rating']."', '".$_POST['comment']."')");
+		$SQLQuery = "INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_POST['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['service']."', '".$_POST['rating']."', '".$_POST['comment']."')";
+		echo $SQLQuery;
+		mysql_query($SQLQuery);
 	}
 
 	
