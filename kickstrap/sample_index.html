@@ -54,7 +54,7 @@
             <div class="span12">
               <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#myModal"></a></h2>
                   <div class="row-fluid row-recommendation">
-                    <div class="span6">Silmara - (11) 1122 3344 <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></div>
+                    <div class="span6">Silmara - (11) 1122 3344 <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>
                     <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D <span class='icon-star'></span> <span class='icon-star'></span>"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
                   </div>
                   <div class="row-fluid row-recommendation">
@@ -88,7 +88,26 @@
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary">Recomendar</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal">Recomendar</a>
+        </div>
+      </div>
+
+      <div class="modal fade" id="oldWorker">
+        <div class="modal-header">
+          <a class="close" data-dismiss="modal">×</a>
+          <h3>Diarista</h3>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline">
+            <p class="rating">
+              Silmara avaliada com
+              <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
+            </p>
+            <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" data-dismiss="modal">Adicionar comentário</a>
         </div>
       </div>
 

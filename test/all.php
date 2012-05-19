@@ -36,9 +36,18 @@ if ($servs) {
 			$q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
 			$x = mysql_fetch_assoc($q);
 			$rating = $x["rating"];
+					
+			echo "Nome:".$worker_i["name"]." Phone:".$worker_i["phone"]." Rating:".$rating." Friends: ". "<br />";
+
+			$recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id");
 			
-				
-			echo "Nome:".$worker_i["name"]." Phone:".$worker_i["phone"]." Rating:".$rating." Comments:".$comments.".<br />";
+			while ($rec_i = mysql_fetch_assoc($recs)) {
+				$query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
+				$answer = file_get_contents($query);
+				echo "Photo:".$answer["picture"]." Comment:".$rec_i["comment"]." Rating:".$rec_i["rating"]."<br />";
+			}
+
+			echo "<br />";
 		}
 	}
     }
