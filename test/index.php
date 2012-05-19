@@ -38,10 +38,9 @@ if (isset($_SESSION["token"])) {
 	$query = "https://graph.facebook.com/".$user_data["id"]."?fields=picture";
 	
 	$answer = file_get_contents($query);
+	$answer = json_decode($answer, true);
 	echo "Photo query: ".$query."<br />";
 
-	$answer = explode(":", $answer);
-	var_dump($answer);
 	echo "Answer:[".$answer["picture"]."]<br />";
 	echo "Answer:[".$answer[0]."]<br />";
 
