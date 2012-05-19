@@ -169,6 +169,10 @@
         $('#add-new-worker').click(function() {
           $.post('new_worker.php', $('#new-worker-form').serialize());
           $('#modal-new-worker').modal('hide');
+          $('#name').val('');
+          $('#phone').val('');
+          $('#comment').val('');
+          rated = 0;
         });
       });
       </script>
