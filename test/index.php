@@ -25,7 +25,8 @@ if (isset($actual_code)) {
 if (isset($_SESSION["token"])) {
 	$query = "https://graph.facebook.com/me?".$_SESSION["token"];
 	$answer = file_get_contents($query);	
-	echo "resposta:[".$answer."]<br>";
+	var_dump($answer);
+	$user_id = 1;
 }
 
 
