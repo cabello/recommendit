@@ -30,7 +30,7 @@ if (isset($_SESSION["token"])) {
 
 	var_dump($user_data);
 	foreach($user_data as $xx => $yy) {
-		echo "["$xx."]=>[".$yy."]<br />";
+		echo "[".$xx."]=>[".$yy."]<br />";
 	}
 	echo "ID: ".$user_data["id"]."<br />";
 
