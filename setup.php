@@ -82,7 +82,7 @@ ENGINE = InnoDB
 
 mysql_query("INSERT INTO service (name) VALUES ('Diarista')");
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara', '1188553322', '1')");
-mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '1023132131', '1', '4', 'Gosto muito dela')");
+mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', '501050133', '1', '4', 'Gosto muito dela')");
 
 echo "Done!";
 
