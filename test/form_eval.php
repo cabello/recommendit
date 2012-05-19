@@ -36,12 +36,7 @@ error_reporting(E_ALL);
 ?>
 
 
-<?php
-if (count($_POST) > 0) {
-  print json_encode($_POST);
-  die();
-}
-?>
+
 
 
 <div>
