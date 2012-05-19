@@ -35,7 +35,8 @@ if (isset($_SESSION["token"])) {
 
 	$_SESSION["user_id"] = $user_data["id"];
 	
-	$query = "https://graph.facebook.com/".$user_data["id"]."/picture";
+	$query = "https://graph.facebook.com/".$user_data["id"]."?fields=picture";
+	
 	$answer = file_get_contents($query);
 	echo "Photo query: ".$query."<br />";
 	echo "Answer:[".$answer."]<br />";
