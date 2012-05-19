@@ -96,15 +96,15 @@ if (! $works2) {
 
 $mask = "(##) ####-####";
 
-$open_span6 = false;
+$open_span7 = false;
 $service = null;
 $worker = null;
 while ($rec = mysql_fetch_assoc($works2)) {
   if ($service == null || $service != $rec['service_name']) {
-    if ($open_span6) {
+    if ($open_span7) {
       echo '    </div>';
       echo '</div>';
-      $open_span6 = false;
+      $open_span7 = false;
     }
 
     $service = $rec['service_name'];
@@ -112,17 +112,17 @@ while ($rec = mysql_fetch_assoc($works2)) {
   }
 
   if ($worker == null || $worker != $rec['name']) {
-    if ($open_span6) {
+    if ($open_span7) {
       echo '    </div>';
       echo '</div>';
 
-      $open_span6 = false;
+      $open_span7 = false;
     }
 
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
-    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" href="#oldWorker">';
+    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" href="#oldWorker">';
     $rating = 3;
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
@@ -132,8 +132,8 @@ while ($rec = mysql_fetch_assoc($works2)) {
       }
     }
     echo '</a></div>';
-    echo '    <div class="span6">';
-    $open_span6 = true;
+    echo '    <div class="span7">';
+    $open_span7 = true;
   }
 
   echo '<a href="#" class="rating-comment" rel="tooltip" title="&nbsp;'.$rec["comment"].' '.stars($rec["rating"]).'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
