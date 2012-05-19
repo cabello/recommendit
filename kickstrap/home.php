@@ -68,7 +68,8 @@ window.fbAsyncInit = function() {
 appId      : '<?php echo $app_id?>', // App ID
 status     : true, // check login status
 cookie     : true, // enable cookies to allow the server to access the session
-xfbml      : true  // parse XFBML
+xfbml      : true,  // parse XFBML
+oauth      : true
 });
 };
 
@@ -81,10 +82,7 @@ xfbml      : true  // parse XFBML
  }(document));
 </script>
 
-<fb:login-button show-faces="true" width="400" height="1000" max-rows="1" scope="publish_actions">
-</fb:login-button>
-
-<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+<div class="fb-login-button">Login with Facebook</div>
 <?php
 header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
 ?>
