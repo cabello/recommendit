@@ -211,12 +211,36 @@ function stars($rating) {
         </div>
       </div>
 
-      <div id="fb-root"></div>
-            <script src="http://connect.facebook.net/en_US/all.js"></script>
-		       <script>
-			         FB.init({appId:<?php echo $_SESSION["app_id"];?>, cookie:true,status:true, xfbml:true  });
-			         FB.ui({ method: 'feed', message: 'RecommendIt to your friends!'});
-		      </script>
+
+		      <div id='fb-root'></div>
+		      <script src='http://connect.facebook.net/en_US/all.js'></script>
+		      <p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
+		      <p id='msg'></p>
+
+		      <script>
+
+		      FB.init({appId: <?php echo $_SESSION["app_id"];?>, status: true, cookie: true});
+
+		      function postToFeed() {
+
+			      // calling the API ...
+			      var obj = {
+					method: 'feed',
+					link: 'http://recommendit.herokuapp.com/',
+					picture: 'http://fbrell.com/f8.jpg',
+					name: 'Facebook - RecommendIt',
+					caption: 'recommendIt',
+					description: 'Share you your friends!'
+			      };
+
+			      function callback(response) {
+				      document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+			      }
+			      FB.ui(obj, callback);
+		      }
+
+</script>
+
 
 
       <div class="modal fade" id="oldWorker">
