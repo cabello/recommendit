@@ -11,12 +11,14 @@ mysql_connect(
 
 mysql_select_db($db);
 
+ini_set("display_errors", "1");
+error_reporting(E_ALL);
 
 
 	if(isset($_POST['name'])){
 		$SQLQuery = "INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', 2)";
 		echo $SQLQuery;
-		mysql_query($SQLQuery);
+		mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('".$_POST['name']."', '".$_POST['telephone']."', 2)");
 		
 	}
 
