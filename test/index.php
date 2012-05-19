@@ -26,7 +26,7 @@ if (isset($_SESSION["token"])) {
 	$query = "https://graph.facebook.com/me?".$_SESSION["token"];	
 	$answer = file_get_contents($query);
 	
-	$user_data = json_decode($answer);
+	$user_data = json_decode($answer, true);
 
 	var_dump($user_data);
 
