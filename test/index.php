@@ -21,8 +21,8 @@ if (isset($actual_code)) {
 
 //	$url = "hwww.google.com";
 	$answer = file_get_contents($url);	
-	print_r( $answer);
-	preg_match("/(ace)/", $answer, $matches);
+	
+	$matches = explode($answer, "&");
 	var_dump($matches);
 	$token = $matches[0];
 	echo "[".$token."]<br>";
