@@ -3,6 +3,7 @@ echo "here";
 $actual_code = $_GET["code"];
 
 if (!isset($actual_code)) {
+	echo "INSIDE";
 	$app_id = 	$_SESSION["app_id"];
 	$redirect_uri = $_SESSION["redirect_uri"];
 	$app_secret =	$_SESSION["app_secret"];
