@@ -39,6 +39,7 @@ if (isset($_SESSION["token"])) {
 	
 	$answer = file_get_contents($query);
 	echo "Photo query: ".$query."<br />";
+	print_r($answer);
 	echo "Answer:[".$answer["picture"]."]<br />";
 
 	$query = "https://graph.facebook.com/me/friends?".$_SESSION["token"];
