@@ -65,7 +65,7 @@ echo '0';
 mysql_query('
 CREATE  TABLE IF NOT EXISTS `recommendation` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `id_facebook` INT NULL ,
+  `id_facebook` VARCHAR(255) NULL ,
   `id_worker` INT NULL ,
   `id_service` INT NULL ,
   `rating` TINYINT NULL ,
