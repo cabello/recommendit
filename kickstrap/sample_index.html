@@ -71,18 +71,19 @@
         </div>
         <div class="modal-body">
           <form class="form-inline">
-            <input type="text" class="input-large name" placeholder="Name">
-            <input type="text" class="input-small" placeholder="Phone">
+            <input type="text" class="input-large name" placeholder="Name" />
+            <input type="text" class="input-small" placeholder="Phone" />
+            <input type="hidden" name="rating" id="rating" />
               <div id="rateMe" title="Rate Me..." class="rating">
-                <a onclick="rateIt(this)" id="_1" title="ehh..." class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                <a onclick="rateIt(this)" id="_2" title="Not Bad" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                <a onclick="rateIt(this)" id="_3" title="Pretty Good" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                <a onclick="rateIt(this)" id="_4" title="Out Standing" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                <a onclick="rateIt(this)" id="_5" title="Freakin' Awesome!" class="icon-star-empty" onmouseover="rating(this)" onmouseout="off(this)"></a>
-                <span id="rateStatus">Rate Me...</span>
-                <span id="ratingSaved">Rating Saved!</span>  
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus"></span>
+                <span id="ratingSaved">Rating Saved!</span>
               </div>
-        
+
 
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
           </form>
@@ -163,6 +164,8 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('.tooltip').tooltip();
+        $('.rating a').hover(rating, off);
+        $('.rating a').click(rateIt);
       });
       </script>
 	  <script>

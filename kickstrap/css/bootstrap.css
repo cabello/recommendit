@@ -6086,7 +6086,7 @@ li[class*=" icomoon-"].icon-large:before {
   width: 70%;
 }
 .modal .rating {
-  padding-top: 6px;
+  padding: 6px 0;
   font-size: 18px;
 }
 .modal .comment {
