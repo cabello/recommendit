@@ -136,7 +136,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     echo "{$rec['id']}";
     echo "{$avgs[$rec['id']]}";
     $rating = $avgs[$rec['id']];
-    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'"href="#oldWorker">';
+    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
         echo '<span class="icon-star"></span>&nbsp';
@@ -196,7 +196,7 @@ function stars($rating) {
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recomendar</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal" id="add-new-worker">Recommending</a>
         </div>
       </div>
 
@@ -213,10 +213,11 @@ function stars($rating) {
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
             <input type="hidden" id="old_worker_id" name="id_worker" />
+            <input type="hidden" id="old_service_id" name="id_service" />
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#" class="btn btn-primary" data-dismiss="modal">Adicionar comentário</a>
+          <a href="#" class="btn btn-primary" data-dismiss="modal">Add comment</a>
         </div>
       </div>
 
@@ -290,6 +291,7 @@ function stars($rating) {
           $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
           $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
           $('#old_service_name').html($(e.target.parentNode).data('service-name'));
+          $('#old_service_id').val($(e.target.parentNode).data('service-id'));
         });
       });
       </script>
