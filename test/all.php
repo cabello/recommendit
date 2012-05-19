@@ -44,7 +44,8 @@ if ($servs) {
 			while ($rec_i = mysql_fetch_assoc($recs)) {
 				$query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
 				$answer = file_get_contents($query);
-				echo "Photo:".$answer["picture"]." Comment:".$rec_i["comment"]." Rating:".$rec_i["rating"]."<br />";
+				$answer = json_decode($answer, true);
+				echo "Photo:<img src='".$answer["picture"]."'/> Comment:".$rec_i["comment"]." Rating:".$rec_i["rating"]."<br />";
 			}
 
 			echo "<br />";

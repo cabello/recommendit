@@ -41,9 +41,7 @@ if (isset($_SESSION["token"])) {
 	$answer = json_decode($answer, true);
 	echo "Photo query: ".$query."<br />";
 
-	echo "Answer:[".$answer["picture"]."]<br />";
-	echo "Answer:[".$answer[0]."]<br />";
-
+	echo "<img src='".$answer["picture"]."'/><br />";
 	$query = "https://graph.facebook.com/me/friends?".$_SESSION["token"];
 	$answer = file_get_contents($query);
 	$friends = json_decode($answer);
