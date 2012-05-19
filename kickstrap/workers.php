@@ -225,7 +225,7 @@ if ($worker != null) {
         <div class="modal-body">
           <form class="form-inline">
             <p class="rating">
-
+              <span id="old_worker_message"></span>
               <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span>
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3"></textarea>
@@ -304,7 +304,7 @@ if ($worker != null) {
           $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
         $('.rate_old_worker').click(function(e){
-          $('.modal .rating').html($(e.target).data('worker-name'));
+          $('#old_worker_message').html($(e.target).data('worker-name'));
           $('#old_worker_id').val($(e.target).data('worker-id'));
         });
       });
