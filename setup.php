@@ -83,13 +83,14 @@ CREATE  TABLE IF NOT EXISTS `recommendation` (
 ENGINE = InnoDB
 ');
 
-
+echo '1';
 mysql_query("INSERT INTO service (name) VALUES ('Maid')");
 mysql_query("INSERT INTO service (name) VALUES ('Mechanical')");
 mysql_query("INSERT INTO service (name) VALUES ('Car wash')");
 mysql_query("INSERT INTO service (name) VALUES ('Taxi driver')");
 mysql_query("INSERT INTO service (name) VALUES ('Mudança')");
 
+echo '2';
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Silmara',  '1188541320', '1')");
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Jurema',   '2184544320', '1')");
 mysql_query("INSERT INTO worker (name, phone, id_service) VALUES ('Cleonice', '4168544320', '1')");
@@ -115,6 +116,8 @@ $pa = "1389995798"; //rafael
 $pb = "100001196684302"; //nanda
 $pc = "628355049"; //naty
 
+
+echo '3';
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', ".$carlos.", '1', '5', 'I llike her')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', ".$vns.",    '1', '4', 'Nice one!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', ".$pc.",     '1', '3', 'Regular')");
@@ -124,6 +127,8 @@ mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rat
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', ".$pa.",     '1', '1', 'Way yo bad')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('1', ".$pb.",     '1', '3', 'No comments!')");
 
+
+echo '4';
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('11', ".$pc.",     '11', '5', 'Good!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('11', ".$lucas.",  '11', '4', 'Ok..ok')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('11', ".$thiago.", '11', '5', 'Very good')");
@@ -133,6 +138,7 @@ mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rat
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('11', ".$pb.",     '11', '5', 'Good!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('11', ".$pa.",     '11', '5', 'Very cheap!')");
 
+echo '5';
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('21', ".$pa.", 	 '21', '3', 'Not bad..')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('21', ".$pb.", 	 '21', '1', 'Very cheap!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('21', ".$carlos.", '21', '5', '')");
@@ -142,6 +148,7 @@ mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rat
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('21', ".$lucas.",  '21', '3', 'Good!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('21', ".$thiago.", '21', '1', 'Not bad..')");
 
+echo '6';
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('31', ".$thiago.", '31', '3', 'Not bad..')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('31', ".$pc.", 	 '31', '5', 'Good!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('31', ".$carlos.", '31', '2', 'Very cheap!')");
@@ -151,6 +158,7 @@ mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rat
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('31', ".$pb.", 	 '31', '1', 'Ok..ok')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('31', ".$vns.",    '31', '4', 'Good!')");
 
+echo '7';
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('41', ".$marcos.", '41', '5', 'Not bad..')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('41', ".$vns.", 	 '41', '4', 'Very cheap!')");
 mysql_query("INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('41', ".$pa.", 	 '41', '1', 'Ok..ok')");
