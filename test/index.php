@@ -1,7 +1,9 @@
 <?
 echo "here";
 $actual_code = $_GET["code"];
-$var_dump($_GET);
+
+var_dump($_GET);
+
 if (!isset($actual_code)) {
 	echo "INSIDE";
 	$app_id = 	$_SESSION["app_id"];
