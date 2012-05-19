@@ -1,7 +1,7 @@
 <?
 echo "here";
 $actual_code = $_GET["code"];
-
+echo phpinfo();
 //var_dump($_GET);
 
 if (isset($actual_code)) {
@@ -13,7 +13,7 @@ if (isset($actual_code)) {
 	$url = "https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=$redirect_uri&client_secret=$app_secret&code=$actual_code";
 
 	$url = "www.google.com";
-	$answer = file_get_contents($url);
+	$answer = file_get_contents($url);	
 	echo $answer."<br>";
 }
 
