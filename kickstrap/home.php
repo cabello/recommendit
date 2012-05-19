@@ -82,7 +82,7 @@ oauth      : true
  }(document));
 </script>
 
-<div class="fb-login-button">Login with Facebook</div>
+<div class="fb-login-button" scope="<?php echo $permittion_names ?>">Login with Facebook</div>
 <?php
 //header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
 ?>
