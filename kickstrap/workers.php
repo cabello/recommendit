@@ -252,7 +252,8 @@ function stars($rating) {
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
     <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
-    <script type="text/javascript" src="extras/jgrowl/jquery.jgrowl.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="extras/jgrowl/jquery.jgrowl.min.js" ></script>
 
 	  <!-- end scripts -->
 
@@ -276,7 +277,7 @@ function stars($rating) {
           $('#new-worker-name').val('');
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
-          rated = 0;
+          resetRate();
         });
         $('.service-name a').click(function(e) {
           $('#new-worker-id_service').val($(e.target).data('id-service'));
