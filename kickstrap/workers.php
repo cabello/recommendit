@@ -136,12 +136,22 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $open_span6 = true;
   }
 
-  echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
+  echo '<a href="#" class="rating-comment" rel="tooltip" title="&nbsp;'.$rec["comment"].' '.stars($rec["rating"]).'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
 }
 
 if ($worker != null) {
   echo '    </div>';
   echo '</div>';
+}
+
+function stars($rating) {
+  $return = '';
+
+  for ($i = 0; $i < $rating; $i++) {
+    $return .= "<span class='icon-star'></span>&nbsp";
+  }
+
+  return $return;
 }
 
 /*if ($servs) {
