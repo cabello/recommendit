@@ -26,13 +26,17 @@ if (isset($_SESSION["token"])) {
 	$query = "https://graph.facebook.com/me?".$_SESSION["token"];	
 	$answer = file_get_contents($query);
 	
-	$user_data = json_decode($answer);
+	$user_data = json_decode($answer, true);
 
 	var_dump($user_data);
-	$_SESSION["user_id"] = $user_data["id"];
+
+	var_dump($user_data["id"]);
 	echo "ID: ".$user_data["id"]."<br />";
 
-	$query = "https://graph.facebook.com/".$user_data["id"]."/picture";
+	$_SESSION["user_id"] = $user_data["id"];
+	
+	$query = "https://graph.facebook.com/".$user_data["id"]."?fields=picture";
+	
 	$answer = file_get_contents($query);
 	echo "Photo query: ".$query."<br />";
 	echo "Answer:[".$answer."]<br />";
