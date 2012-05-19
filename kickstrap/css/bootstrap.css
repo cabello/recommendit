@@ -3476,7 +3476,7 @@ input[type="submit"].btn.btn-mini {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 1050;
+  z-index: 5050;
   overflow: auto;
   width: 430px;
   margin: -250px 0 0 -215px;
