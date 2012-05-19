@@ -1,5 +1,7 @@
 <?php
 
+//-----------------------
+
 $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 mysql_connect(

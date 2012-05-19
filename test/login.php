@@ -1,38 +1,27 @@
-<?
-echo "here";
-$actual_code = $_GET["code"];
-//echo phpinfo();
-//var_dump($_GET);
-
-if (isset($actual_code)) {
-	echo "INSIDE";
-	$app_id = 	$_SESSION["app_id"];
-	$redirect_uri = $_SESSION["redirect_uri"];
-	$app_secret =	$_SESSION["app_secret"];
-
-	$url = "https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=$redirect_uri&client_secret=$app_secret&code=$actual_code";
-	ini_set('allow_url_fopen', true);
-//	$url = "hwww.google.com";
-	$answer = file_get_contents($url);	
-
-	echo $answer."<br>";
-}
-
-
-
-?>
+<?session_start();?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
 xmlns:fb="https://www.facebook.com/2008/fbml"> 
-<head
+<head>
 <title>OG Tutorial App</title>
 </head>
 <body>
 <div id="fb-root"></div>
 <script>
+<?
+	$app_id = "362571837137094";
+	$index_url = "http://fb-hacktoon.herokuapp.com/test/index.php";
+	$permittion_names = "read_friendlists,read_insights";
+	$last_param = "_unique_are_you";
+	
+	$app_secret = "51bb5cf55b06641f625a2e4f20e60334";
 
+	$_SESSION["app_secret"] = $app_secret;
+	$_SESSION["app_id"] = $app_id;
+	$_SESSION["redirect_uri"] = $index_url;
+?>
 window.fbAsyncInit = function() {
 	FB.init({
-appId      : 362571837137094, // App ID
+appId      : <?$app_id?>, // App ID
 status     : true, // check login status
 cookie     : true, // enable cookies to allow the server to access the session
 xfbml      : true  // parse XFBML
@@ -52,6 +41,9 @@ xfbml      : true  // parse XFBML
 </fb:login-button>
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
+<?
+header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
+?>
 </p>
 </body>
 </html>
