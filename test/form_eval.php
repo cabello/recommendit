@@ -27,7 +27,7 @@ error_reporting(E_ALL);
 
 
 	if(isset($_POST['rating'])){
-		$SQLQuery = "INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_POST['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['service']."', '".$_POST['rating']."', '".$_POST['comment']."')";
+		$SQLQuery = "INSERT INTO recommendation (id_worker, id_facebook, id_service, rating, comment) VALUES ('".$_GET['id_worker']."', '".$_SESSION['user_id']."', '".$_POST['service']."', '".$_POST['rating']."', '".$_POST['comment']."')";
 		echo $SQLQuery;
 		mysql_query($SQLQuery);
 	}
@@ -46,7 +46,7 @@ if (count($_POST) > 0) {
 
 <div>
 	<form name="add_new" action="#" method="post">
-		<input type="hidden" name="id_worker" value="1" /><br>
+		<!-- <input type="hidden" name="id_worker" value="1" /><br> -->
 		<input type="hidden" name="service" value="1" />
 		Rating: <input type="text" name="rating" required="required" /><br>
 		Comentario: <input type="text" name="comment" required="required" /><br>
