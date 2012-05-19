@@ -229,8 +229,8 @@ function stars($rating) {
 					link: 'http://recommendit.herokuapp.com/',
 					picture: 'http://fbrell.com/f8.jpg',
 					name: 'Facebook - RecommendIt',
-					caption: 'recommendIt',
-					description: 'Share you your friends!'
+					caption: '',
+					description: 'Share your recommendations, help your friends!'
 			      };
 
 			      function callback(response) {
