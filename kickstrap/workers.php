@@ -78,9 +78,16 @@ $friends_ids = '(';
 foreach ($data["data"] as $item) {
   $friends_ids .= $item["id"] . ',';
   $pictures[$item["id"]] = $item["picture"];
-}
-$friends_ids = substr($friends_ids, 0, strlen($friends_ids) - 1);
-$friends_ids .= ')';
+};
+
+$query = "https://graph.facebook.com/me/picture?access_token=".$_SESSION["token"];
+$response = file_get_contents($query);
+echo '<pre>';
+print_r($response);
+echo '</pre>';
+
+$pictures[$_SESSION['user_id']] = $response;
+$friends_ids .= $_SESSION['user_id'].')';
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
