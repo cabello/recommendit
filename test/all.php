@@ -45,7 +45,7 @@ if ($servs) {
 				$query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
 				$answer = file_get_contents($query);
 				$answer = json_decode($answer, true);
-				echo "Photo:<img src='".$answer["picture"]."'/> Comment:".$rec_i["comment"]." Rating:".$rec_i["rating"]."<br />";
+				echo "<img src='".$answer["picture"]."' title='Comment:".$rec_i["comment"]." Rating:".$rec_i["rating"]."'/>";
 			}
 
 			echo "<br />";
