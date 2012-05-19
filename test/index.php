@@ -39,11 +39,12 @@ if (isset($_SESSION["token"])) {
 	
 	$answer = file_get_contents($query);
 	echo "Photo query: ".$query."<br />";
+
 	print_r($answer);
-	foreach($answer as $aa => $bb) {
-		echo "[".$aa."]=>[".$bb."]<br />";
-	}
+	var_dump($answer);
+
 	echo "Answer:[".$answer["picture"]."]<br />";
+	echo "Answer:[".$answer[0]."]<br />";
 
 	$query = "https://graph.facebook.com/me/friends?".$_SESSION["token"];
 	$answer = file_get_contents($query);
