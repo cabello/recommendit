@@ -17,8 +17,8 @@ mysql_select_db($db);
 $servs = mysql_query("SELECT * FROM service");
 $works = mysql_query("SELECT * FROM worker");
 
-//$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id");
-$recs = mysql_query("SELECT * FROM recommendation GROUP BY id");
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
+//$recs = mysql_query("SELECT * FROM recommendation GROUP BY id");
 
 echo "Services:<br />";
 if ($servs) {
