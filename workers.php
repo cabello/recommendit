@@ -211,6 +211,14 @@ function stars($rating) {
         </div>
       </div>
 
+      <div id="fb-root"></div>
+            <script src="http://connect.facebook.net/en_US/all.js"></script>
+		       <script>
+			         FB.init({appId:<?php echo $_SESSION["app_id"];?>, cookie:true,status:true, xfbml:true  });
+			         FB.ui({ method: 'feed', message: 'RecommendIt to your friends!'});
+		      </script>
+
+
       <div class="modal fade" id="oldWorker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
