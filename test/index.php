@@ -1,3 +1,21 @@
+<?
+
+$actual_code = $_GET["code"];
+
+if (!isset($actual_code)) {
+	$app_id = 	$_SESSION["app_id"];
+	$redirect_uri = $_SESSION["redirect_uri"];
+	$app_secret =	$_SESSION["app_secret"];
+
+	$url = "https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=$redirect_uri&client_secret=$app_secret&code=$actual_code";
+
+	$answer = file_get_contents($url);
+	echo $answer."<br>";
+}
+
+
+
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
 xmlns:fb="https://www.facebook.com/2008/fbml"> 
 <head>

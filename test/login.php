@@ -9,7 +9,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <script>
 <?
 	$app_id = "362571837137094";
-	$index_url = "http://fb-hacktoon.herokuapp.com/";
+	$index_url = "http://fb-hacktoon.herokuapp.com/test";
 	$permittion_names = "read_friendlists,read_insights";
 	$last_param = "_unique_are_you";
 	
