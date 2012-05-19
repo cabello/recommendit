@@ -147,7 +147,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
 
     echo '<div class="row-fluid row-recommendation">';
     $rating = $avgs[$rec['id_worker']];
-    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
+    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id_worker"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
         echo '<span class="icon-star"></span>&nbsp';
