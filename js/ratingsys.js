@@ -5,7 +5,7 @@ Date: 10/31/2006
 
 var sMax = 5;	// Isthe maximum number of stars
 var preSet; // Is the PreSet value onces a selection has been made
-var rated;
+var rated = 0;
 
 // Rollover for image Stars //
 function rating(e){
@@ -29,17 +29,31 @@ function rating(e){
 
 // For when you roll out of the the whole thing //
 function off(e){
-	node = $(e.target);
+	if (rated === 0) {
+		node = $(e.target);
 
-	node.addClass('icon-star-empty');
-	node.removeClass('icon-star');
+		node.addClass('icon-star-empty');
+		node.removeClass('icon-star');
 
-	node.siblings('a').each(function(i, element) {
-		element = $(element);
-		element.removeClass('icon-star');
-		element.addClass('icon-star-empty');
-		node.siblings('.rateStatus').html('');
-	});
+		node.siblings('a').each(function(i, element) {
+			element = $(element);
+			element.removeClass('icon-star');
+			element.addClass('icon-star-empty');
+			node.siblings('.rateStatus').html('');
+		});
+	} else {
+		if (node.data('rating') == rated) {
+			rating({target: node});
+		} else {
+			node.siblings('a').each(function(i, element) {
+			element = $(element);
+			if (element.data('rating') == rated) {
+				rating({target: element});
+				return;
+			}
+		});
+		}
+	}
 }
 
 // When you actually rate something //
@@ -58,7 +72,7 @@ function sendRate(node){
 }
 
 function resetRate() {
-	rated=0;
+	rated = 0;
 	$('.rateMe a').removeClass('icon-star');
 	$('.rateMe a').addClass('icon-star-empty');
 	$('.rateMe .rateStatus').html('');
