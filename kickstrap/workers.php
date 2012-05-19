@@ -68,7 +68,7 @@ $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
 $recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
-$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id%2Cpicture";
+$query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture&access_token=".$_SESSION["token"];
 $response = file_get_contents($query);
 echo '<pre>';
 print_r($response);
