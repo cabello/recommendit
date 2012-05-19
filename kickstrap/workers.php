@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -53,14 +54,59 @@
         <div class="row-fluid">
             <div class="span12">
               <h2 class="service-name">Diaristas <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker"></a></h2>
-                  <div class="row-fluid row-recommendation">
-                    <div class="span6">Silmara - (11) 1122 3344 <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>
-                    <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D <span class='icon-star'></span> <span class='icon-star'></span>"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
-                  </div>
-                  <div class="row-fluid row-recommendation">
-                    <div class="span6">Elaine - (11) 1122 3344 <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span> <span class="icon-star-empty"></span></div>
-                    <div class="span6"><a href="#" class="tooltip" rel="tooltip" title="Ela limpa muito bem e não mexe nas suas coisas! :D"><img src="http://placehold.it/32x32" alt="" /></a> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /> <img src="http://placehold.it/32x32" alt="" /></div>
-                  </div>
+                  <?php
+
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+mysql_connect(
+        $server = $url["host"],
+        $username = $url["user"],
+        $password = $url["pass"]);
+        $db=substr($url["path"],1);
+
+mysql_select_db($db);
+
+$servs = mysql_query("SELECT * FROM service");
+
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
+
+if ($servs) {
+    while ($serv_i = mysql_fetch_assoc($servs)) {
+
+        echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'"></a></h2>';
+
+      $service_id = $serv_i["id"];
+      $q1 = "SELECT * FROM worker where id_service = $service_id";
+      $works = mysql_query($q1);
+      if ($works) {
+          while ($worker_i = mysql_fetch_assoc($works)) {
+          $worker_id = $worker_i["id"];
+          $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
+          $x = mysql_fetch_assoc($q);
+          $rating = $x["rating"];
+
+                echo '<div class="row-fluid row-recommendation">';
+                echo '    <div class="span6">'.$worker_i["name"].' - '.$worker_i["phone"].' <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>';
+                echo '    <div class="span6">';
+                while ($rec_i = mysql_fetch_assoc($recs)) {
+                    $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
+                    $answer = file_get_contents($query);
+                    $answer = json_decode($answer, true);
+                    echo '<a href="#" class="tooltip" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$answer["picture"].'" /></a>"';
+                }
+                echo '    </div>';
+                echo '</div>';
+
+          echo "Rating:".$rating."<br />";
+
+          $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id");
+        }
+      }
+    }
+}
+
+?>
+
             </div><!--/span-->
       </div><!--/row-fluid-->
 
