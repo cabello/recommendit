@@ -69,11 +69,6 @@ $query = "https://graph.facebook.com/me?fields=picture&access_token=".$_SESSION[
 $my_picture = json_decode(file_get_contents($query));
 $pictures[$_SESSION['user_id']] = $my_picture->picture;
 
-// services
-$servs = mysql_query("SELECT * FROM service ORDER BY name");
-
-$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
-
 $query = "https://graph.facebook.com/".$_SESSION['user_id']."/friends?fields=id,picture&access_token=".$_SESSION["token"];
 $response = file_get_contents($query);
 $data = json_decode($response, true);
@@ -86,13 +81,21 @@ foreach ($data["data"] as $item) {
 };
 $friends_ids .= $_SESSION['user_id'].')';
 
-$q2 = "SELECT service.name service_name, service.id service_id, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id, worker.id";
+$q2 = "SELECT service.name service_name, service.id service_id, worker.*, recommendation.* FROM service INNER JOIN worker ON service.id = worker.id_service INNER JOIN recommendation ON worker.id = recommendation.id_worker WHERE recommendation.id_facebook IN {$friends_ids} ORDER BY service.name, service.id, worker.name, worker.id";
 $works2 = mysql_query($q2);
 if (! $works2) {
   echo "<pre>";
   echo mysql_error();
   echo "</pre>";
 }
+
+$avgs = array();
+$avgs_query = "SELECT id_worker, avg(rating) avg_rating FROM recommendation WHERE id_facebook IN {$friends_ids} GROUP BY id_worker";
+$avgs_result = mysql_query($avgs_query);
+while ($record = mysql_fetch_assoc($avgs_result)) {
+  $avgs[$record['id_worker']] = $record['avg_rating'];
+}
+
 
 $mask = "(##) ####-####";
 
@@ -123,7 +126,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
 
     echo '<div class="row-fluid row-recommendation">';
     echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" href="#oldWorker">';
-    $rating = 3;
+    $rating = $avgs[$rec['id']];
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
         echo '<span class="icon-star"></span>&nbsp';
@@ -153,46 +156,6 @@ function stars($rating) {
 
   return $return;
 }
-
-/*if ($servs) {
-    while ($serv_i = mysql_fetch_assoc($servs)) {
-
-      echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'" data-service-name="'.$serv_i["name"].'"></a></h2>';
-
-      $service_id = $serv_i["id"];
-      $q1 = "SELECT * FROM worker WHERE id_service = $service_id";
-      $works = mysql_query($q1);
-
-      if ($works) {
-          while ($worker_i = mysql_fetch_assoc($works)) {
-          $worker_id = $worker_i["id"];
-          $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
-          $x = mysql_fetch_assoc($q);
-          $rating = floor($x["rating"]);
-          $mask = "(##) ####-####";
-                echo '<div class="row-fluid row-recommendation">';
-                echo '    <div class="span6">'.$worker_i["name"].' - '.phone_mask($mask,$worker_i["phone"]).' <a data-toggle="modal" href="#oldWorker">';
-                for ($i = 1; $i <= 5; $i++) {
-                  if ($i <= $rating) {
-                    echo '<span class="icon-star"></span>&nbsp';
-                  } else {
-                    echo '<span class="icon-star-empty"></span>&nbsp';
-                  }
-                }
-                echo '</a></div>';
-                echo '    <div class="span6">';
-                while ($rec_i = mysql_fetch_assoc($recs)) {
-                    echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec_i["comment"].' '.$rec_i["rating"].'"><img src="'.$pictures[$rec_i["id_facebook"]].'" /></a>';
-                }
-                echo '    </div>';
-                echo '</div>';
-
-          $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id AND id_facebok IN {$friends_ids}");
-        }
-      }
-    }
-}*/
-
 ?>
 
             </div><!--/span-->
