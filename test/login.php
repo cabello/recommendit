@@ -8,7 +8,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <script>
 <?
 	$app_id = "362571837137094";
-	$indel_url = "index.php";
+	$indel_url = "https://apps.facebook.com/fbhacktoon";
 	$permittion_names = "read_friendlists";
 	$last_param = "_unique_are_you";
 ?>
