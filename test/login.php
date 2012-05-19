@@ -35,11 +35,7 @@ xfbml      : true  // parse XFBML
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 <?
-	header("location: https://www.facebook.com/dialog/oauth?
-			    client_id= $app_id
-			       &redirect_uri= $index_url
-			          &scope= $permition_names
-				     &state=$last_param");
+header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri= $index_url&scope= $permition_names&state=$last_param");
 ?>
 </p>
 </body>
