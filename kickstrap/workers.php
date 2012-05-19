@@ -1,6 +1,12 @@
-<?php session_start(); 
+<?php session_start();
 require ('bd.php');
+require ('util.php');
+
+if ( ! $_SESSION['user_id']) {
+  header('Location: index.php');
+}
 ?>
+
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -60,12 +66,12 @@ require ('bd.php');
 
 $servs = mysql_query("SELECT * FROM service ORDER BY name");
 
-$recs = mysql_query("SELECT id, id_facebook, id_worker, floor(avg(rating)), comment FROM recommendation GROUP BY id_worker");
+$recs = mysql_query("SELECT id, id_facebook, id_worker, avg(rating), comment FROM recommendation GROUP BY id_worker");
 
 if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
 
-        echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'"></a></h2>';
+      echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'" data-service-name="'.$serv_i["name"].'"></a></h2>';
 
       $service_id = $serv_i["id"];
       $q1 = "SELECT * FROM worker where id_service = $service_id";
@@ -75,10 +81,18 @@ if ($servs) {
           $worker_id = $worker_i["id"];
           $q = mysql_query("select avg(rating) AS rating FROM recommendation WHERE id_worker = $worker_id");
           $x = mysql_fetch_assoc($q);
-          $rating = $x["rating"];
-
+          $rating = floor($x["rating"]);
+          $mask = "(##) ####-####";
                 echo '<div class="row-fluid row-recommendation">';
-                echo '    <div class="span6">'.$worker_i["name"].' - '.$worker_i["phone"].' <a data-toggle="modal" href="#oldWorker"><span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star"></span> <span class="icon-star-empty"></span></a></div>';
+                echo '    <div class="span6">'.$worker_i["name"].' - '.phone_mask($mask,$worker_i["phone"]).' <a data-toggle="modal" href="#oldWorker">';
+                for ($i = 1; $i <= 5; $i++) {
+                  if ($i <= $rating) {
+                    echo '<span class="icon-star"></span>&nbsp';
+                  } else {
+                    echo '<span class="icon-star-empty"></span>&nbsp';
+                  }
+                }
+                echo '</a></div>';
                 echo '    <div class="span6">';
                 while ($rec_i = mysql_fetch_assoc($recs)) {
                     $query = "https://graph.facebook.com/".$rec_i["id_facebook"]."?fields=picture";
@@ -88,8 +102,6 @@ if ($servs) {
                 }
                 echo '    </div>';
                 echo '</div>';
-
-          echo "Rating:".$rating."<br />";
 
           $recs = mysql_query("SELECT id, id_facebook, id_worker, rating, comment FROM recommendation WHERE id_worker = $worker_id");
         }
@@ -105,7 +117,7 @@ if ($servs) {
       <div class="modal fade" id="modal-new-worker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
-          <h3>Diarista</h3>
+          <h3 id="new-worker-service-name">Diarista</h3>
         </div>
         <div class="modal-body">
           <form class="form-inline" id='new-worker-form'>
@@ -122,7 +134,7 @@ if ($servs) {
                 <span id="ratingSaved">Rating Saved!</span>
               </div>
 
-            <input type="hidden" name="id_service" value="1" />
+            <input type="hidden" name="id_service" id="new-worker-id_service" value="1" />
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-worker-comment"></textarea>
           </form>
         </div>
@@ -211,6 +223,10 @@ if ($servs) {
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
+        });
+        $('.service-name a').click(function(e) {
+          $('#new-worker-id_service').val($(e.target).data('id-service'));
+          $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
       });
       </script>
