@@ -75,6 +75,7 @@ oauth      : true
 
   FB.getLoginStatus(function(response){
     if(response.status === 'connected'){
+      console.log(response);
       $('.fb-login-button').hide();
       $('#roll').fadeIn();
     } else {
