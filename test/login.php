@@ -8,7 +8,7 @@ xmlns:fb="https://www.facebook.com/2008/fbml">
 <script>
 <?
 	$app_id = "362571837137094";
-	$index_url = "http://apps.facebook.com/fbhacktoon";
+	$index_url = "http://fb-hacktoon.herokuapp.com/";
 	$permittion_names = "read_friendlists";
 	$last_param = "_unique_are_you";
 ?>
@@ -35,7 +35,7 @@ xfbml      : true  // parse XFBML
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
 <?
-header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri= $index_url&scope= $permittion_names&state=$last_param");
+header("location: https://www.facebook.com/dialog/oauth?client_id=$app_id&redirect_uri=$index_url&scope=$permittion_names&state=$last_param");
 ?>
 </p>
 </body>
