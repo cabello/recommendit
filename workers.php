@@ -222,21 +222,21 @@ function stars($rating) {
 		      FB.init({appId: <?php echo $_SESSION["app_id"];?>, status: true, cookie: true});
 
 		      function postToFeed() {
-
 			      // calling the API ...
 			      var obj = {
-					method: 'feed',
-					link: 'http://recommendit.herokuapp.com/',
-					picture: 'http://fbrell.com/f8.jpg',
-					name: 'Facebook - RecommendIt',
-					caption: '',
-					description: 'Share your recommendations, help your friends!'
+    					method: 'feed',
+    					link: 'http://recommendit.herokuapp.com/',
+    					picture: 'http://fbrell.com/f8.jpg',
+    					name: 'Facebook - RecommendIt',
+    					caption: '',
+    					description: 'Share your recommendations, help your friends!'
 			      };
 
 			      function callback(response) {
 				      document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
 			      }
 			      FB.ui(obj, callback);
+            window.scrollTo(0);
 		      }
 
 </script>
@@ -332,6 +332,7 @@ function stars($rating) {
         $('#add-new-worker').click(function() {
           $.post('new_worker.php', $('#new-worker-form').serialize(), function() {
             $.jGrowl("Recommendation added!");
+            postToFeed();
           });
           $('#modal-new-worker').modal('hide');
           $('#new-worker-name').val('');
