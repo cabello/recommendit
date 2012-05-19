@@ -36,8 +36,14 @@ if (isset($_SESSION["token"])) {
 //	var_dump($friends);
 }
 
+
 $x = "<a href='all.php'>ALL HERE</a>";
-echo $x;
+$y = "<a href='form_new.php'>ALL HERE</a>";
+$z = "<a href='form_eval.php'>ALL HERE</a>";
+echo "<br>";
+echo $x."<br>";
+echo $y."<br>";
+echo $z."<br>";
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
