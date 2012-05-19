@@ -223,6 +223,9 @@ if ($servs) {
           $('#new-worker-comment').val('');
           rated = 0;
         });
+        $('.service-name a').click(function(e) {
+          console.log(e);
+        });
       });
       </script>
 	  <script>
