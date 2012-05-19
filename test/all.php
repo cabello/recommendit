@@ -51,6 +51,7 @@ if ($servs) {
 			echo "<br />";
 		}
 	}
+	echo "<br />";
     }
 }
 
