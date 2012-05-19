@@ -122,7 +122,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     $worker = $rec['name'];
 
     echo '<div class="row-fluid row-recommendation">';
-    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" href="#oldWorker">';
+    echo '    <div class="span6">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'"href="#oldWorker">';
     $rating = 3;
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
@@ -220,7 +220,7 @@ if ($worker != null) {
       <div class="modal fade" id="oldWorker">
         <div class="modal-header">
           <a class="close" data-dismiss="modal">×</a>
-          <h3>Diarista</h3>
+          <span id="old_service_name"></span>
         </div>
         <div class="modal-body">
           <form class="form-inline">
@@ -306,6 +306,7 @@ if ($worker != null) {
         $('.rate_old_worker').click(function(e){
           $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
           $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
+          $('#old_service_name').html($(e.target.parentNode).data('service-name'));
         });
       });
       </script>
