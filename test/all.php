@@ -27,7 +27,7 @@ if ($servs) {
         echo $serv_i["name"]."<br />";
 
 	$service_id = $serv_i["id"];
-	$q1 = "SELECT * FROM worker where id_service = service_id";
+	$q1 = "SELECT * FROM worker where id_service = $service_id";
 	$works = mysql_query($q1);
 	echo $q1."<br />";
 	if ($works) {
