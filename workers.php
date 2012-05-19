@@ -213,11 +213,11 @@ function stars($rating) {
               <span id="old_worker_message"></span>
               <input type="hidden" name="rating2" id="rating2" />
               <div id="rateMe" title="Rate Me..." class="rating">
-                <a id="_1" title="ehh..." class="icon-star-empty"></a>
-                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
-                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
-                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
-                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <a id="_6" title="ehh..." class="icon-star-empty"></a>
+                <a id="_7" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_8" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_9" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_10" title="Freakin' Awesome!" class="icon-star-empty"></a>
                 <span id="rateStatus"></span>
                 <span id="ratingSaved"></span>
               </div>
