@@ -356,11 +356,14 @@ function stars($rating) {
           $('#new-worker-service-name').html($(e.target).data('service-name'));
         });
         $('.rate_old_worker').click(function(e){
-          console.log(e);
-          $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
-          $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
-          $('#old_service_name').html($(e.target.parentNode).data('service-name'));
-          $('#old_service_id').val($(e.target.parentNode).data('id-service'));
+          node = $(e.target);
+
+          anchor = node.parentsUntil('a');
+
+          $('#old_worker_id').val($(anchor).data('worker-id'));
+          $('#old_worker_message').html($(anchor).data('worker-name'));
+          $('#old_service_name').html($(anchor).data('service-name'));
+          $('#old_service_id').val($(anchor).data('id-service'));
         });
       });
       </script>
