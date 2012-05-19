@@ -21,7 +21,7 @@ if (isset($actual_code)) {
 
 //	$url = "hwww.google.com";
 	$answer = file_get_contents($url);	
-	preg_match("/acess_token=(.*?)\&/", $answer, $matches);
+	preg_match("/acess_token=(.*?)&/", $answer, $matches);
 	$token = $matches[0];
 	echo "[".$token."]<br>";
 }
