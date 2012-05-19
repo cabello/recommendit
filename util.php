@@ -5,6 +5,9 @@ function phone_mask($mask,$string)
    for($i=0;$i<strlen($string);$i++){
       $mask[strpos($mask,"#")] = $string[$i];
    }
+
+   $mask = str_replace('#', '', $mask);
+
    return $mask;
 }
 

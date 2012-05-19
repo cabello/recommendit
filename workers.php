@@ -43,6 +43,15 @@ if ( ! $_SESSION['user_id']) {
   #rateMe a{float:left;}
   #ratingSaved{display:none;}
   .saved{color:red; }
+
+
+  #rateStatus2{float:left; margin-left: 4px;}
+  #rateMe2{float:left; margin-left: 4px; height:auto;}
+  #rateMe2 li{float:left;list-style:none;}
+  #rateMe2 li a:hover,
+  #rateMe2 a{float:left;}
+  #ratingSaved2{display:none;}
+
   </style>
 </head>
 <body>
@@ -211,15 +220,15 @@ function stars($rating) {
           <form class="new-comment-form">
             <p class="rating">
               <span id="old_worker_message"></span>
-              <input type="hidden" name="rating2" id="rating2" />
-              <div id="rateMe" title="Rate Me..." class="rating">
-                <a id="_6" title="ehh..." class="icon-star-empty"></a>
-                <a id="_7" title="Not Bad" class="icon-star-empty"></a>
-                <a id="_8" title="Pretty Good" class="icon-star-empty"></a>
-                <a id="_9" title="Out Standing" class="icon-star-empty"></a>
-                <a id="_10" title="Freakin' Awesome!" class="icon-star-empty"></a>
-                <span id="rateStatus"></span>
-                <span id="ratingSaved"></span>
+              <input type="hidden" name="rating" id="rating2" />
+              <div id="rateMe2" title="Rate Me..." class="rating">
+                <a id="_1" title="ehh..." class="icon-star-empty"></a>
+                <a id="_2" title="Not Bad" class="icon-star-empty"></a>
+                <a id="_3" title="Pretty Good" class="icon-star-empty"></a>
+                <a id="_4" title="Out Standing" class="icon-star-empty"></a>
+                <a id="_5" title="Freakin' Awesome!" class="icon-star-empty"></a>
+                <span id="rateStatus2"></span>
+                <span id="ratingSaved2"></span>
               </div>
             </p>
             <textarea class="input-xlarge comment" placeholder="Comment" rows="3" name="comment" id="new-comment-comment"></textarea>
@@ -269,6 +278,8 @@ function stars($rating) {
 	  <!--script type="text/javascript" src="js/bootstrap-typeahead.min.js"></script-->
 	  <!--script type="text/javascript" src=""></script-->
     <script type="text/javascript" language="javascript" src="js/ratingsys.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="extras/jgrowl/jquery.jgrowl.min.js" ></script>
 
 	  <!-- end scripts -->
 
@@ -287,14 +298,14 @@ function stars($rating) {
         $('.rating a').hover(rating, off);
         $('.rating a').click(rateIt);
         $('#add-new-worker').click(function() {
-          $.post('new_worker.php', $('#new-worker-form').serialize());
+          $.post('new_worker.php', $('#new-worker-form').serialize(), function() {
+            $.jGrowl("Recommendation added!");
+          });
           $('#modal-new-worker').modal('hide');
           $('#new-worker-name').val('');
           $('#new-worker-phone').val('');
           $('#new-worker-comment').val('');
           rated = 0;
-        }, function() {
-           $.jGrowl("Recommendation added!");
         });
 
         $('.rating2 a').hover(rating, off);
@@ -303,7 +314,7 @@ function stars($rating) {
           $.post('new_comment.php', $('#new-comment-form').serialize());
           $('#oldWorker').modal('hide');
           $('#new-comment-comment').val('');
-          rated = 0;
+          resetRate();
         });
 
         $('.service-name a').click(function(e) {
