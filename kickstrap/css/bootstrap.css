@@ -6095,5 +6095,6 @@ li[class*=" icomoon-"].icon-large:before {
   padding-bottom: 0px;
 }
 .rating-comment {
+  display: inline-block;
   padding: 4px;
 }
