@@ -7,7 +7,7 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 
 
-if (isset($actual_code)) {
+/*if (isset($actual_code)) {
 	$app_id = 	$_SESSION["app_id"];
 	$redirect_uri = $_SESSION["redirect_uri"];
 	$app_secret =	$_SESSION["app_secret"];
@@ -15,17 +15,17 @@ if (isset($actual_code)) {
 	$url = "https://graph.facebook.com/oauth/access_token?client_id=$app_id&redirect_uri=$redirect_uri&client_secret=$app_secret&code=$actual_code";
 	ini_set('allow_url_fopen', "on");
 
-	$answer = file_get_contents($url);	
-	
+	$answer = file_get_contents($url);
+
 	$matches = explode("&", $answer);
 	$token = $matches[0];
 	$_SESSION["token"] = $token;
-	
-}
+
+}*/
 if (isset($_SESSION["token"])) {
-	$query = "https://graph.facebook.com/me?".$_SESSION["token"];	
+	$query = "https://graph.facebook.com/me?".$_SESSION["token"];
 	$answer = file_get_contents($query);
-	
+
 	$user_data = json_decode($answer, true);
 
 	var_dump($user_data);
@@ -34,9 +34,9 @@ if (isset($_SESSION["token"])) {
 	echo "ID: ".$user_data["id"]."<br />";
 
 	$_SESSION["user_id"] = $user_data["id"];
-	
+
 	$query = "https://graph.facebook.com/".$user_data["id"]."?fields=picture";
-	
+
 	$answer = file_get_contents($query);
 	$answer = json_decode($answer, true);
 	echo "Photo query: ".$query."<br />";
@@ -58,7 +58,7 @@ echo $z."<br>";
 
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US"
-xmlns:fb="https://www.facebook.com/2008/fbml"> 
+xmlns:fb="https://www.facebook.com/2008/fbml">
 <head
 <title>Main App</title>
 </head>
