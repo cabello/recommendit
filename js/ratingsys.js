@@ -4,7 +4,6 @@ Date: 10/31/2006
 */
 
 var sMax;	// Isthe maximum number of stars
-var holder; // Is the holding pattern for clicked state
 var preSet; // Is the PreSet value onces a selection has been made
 var rated;
 
@@ -15,13 +14,10 @@ function rating(num){
 	sMax = 5;	// Isthe maximum number of stars
 
 	s = num.id.replace("_", ''); // Get the selected star
-	a = 0;
 	for(i=1; i<=sMax; i++){
 		if(i<=s){
 			document.getElementById("_"+i).className = "icon-star";
 			document.getElementById("rateStatus").innerHTML = num.title;
-			holder = a+1;
-			a++;
 		}else{
 			document.getElementById("_"+i).className = "icon-star-empty";
 		}
@@ -56,7 +52,9 @@ function rateIt(me){
 
 // Send the rating information somewhere using Ajax or something like that.
 function sendRate(sel){
-	$('#rating').val(sel.id.replace('_', ''));
+	var number = sel.id.replace('_', '');
+	$('#rating').val(number);
+	rated = number;
 }
 
 function resetRate() {
@@ -64,4 +62,14 @@ function resetRate() {
 	$('#rateMe a').removeClass('icon-star');
 	$('#rateMe a').addClass('icon-star-empty');
 	$('#rateMe #rateStatus').html('');
+}
+
+function setRate(number) {
+	for(i=1; i<=sMax; i++){
+		if(i <= number){
+			document.getElementById("_"+i).className = "icon-star";
+		} else {
+			document.getElementById("_"+i).className = "icon-star-empty";
+		}
+	}
 }
