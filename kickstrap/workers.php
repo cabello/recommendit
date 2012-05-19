@@ -94,13 +94,17 @@ if (! $works2) {
   echo "</pre>";
 }
 
+$mask = "(##) ####-####";
+
+$open_span6 = false;
 $service = null;
 $worker = null;
 while ($rec = mysql_fetch_assoc($works2)) {
   if ($service == null || $service != $rec['service_name']) {
-    if ($service != null) {
+    if ($open_span6) {
       echo '    </div>';
       echo '</div>';
+      $open_span6 = false;
     }
 
     $service = $rec['service_name'];
@@ -108,9 +112,11 @@ while ($rec = mysql_fetch_assoc($works2)) {
   }
 
   if ($worker == null || $worker != $rec['name']) {
-    if ($worker != null) {
+    if ($open_span6) {
       echo '    </div>';
       echo '</div>';
+
+      $open_span6 = false;
     }
 
     $worker = $rec['name'];
@@ -127,6 +133,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
     }
     echo '</a></div>';
     echo '    <div class="span6">';
+    $open_span6 = true;
   }
 
   echo '<a href="#" class="rating-comment" rel="tooltip" title="'.$rec["comment"].' '.$rec["rating"].'"><img src="'.$pictures[$rec["id_facebook"]].'" /></a>';
@@ -137,7 +144,7 @@ if ($worker != null) {
   echo '</div>';
 }
 
-if ($servs) {
+/*if ($servs) {
     while ($serv_i = mysql_fetch_assoc($servs)) {
 
       echo '<h2 class="service-name">'.$serv_i["name"].' <a class="icon-plus-sign" data-toggle="modal" href="#modal-new-worker" data-id-service="'.$serv_i['id'].'" data-service-name="'.$serv_i["name"].'"></a></h2>';
@@ -174,7 +181,7 @@ if ($servs) {
         }
       }
     }
-}
+}*/
 
 ?>
 
