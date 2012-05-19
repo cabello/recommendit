@@ -82,11 +82,10 @@ oauth      : true
     } else {
       $('.fb-login-button').fadeIn();
       FB.Event.subscribe('auth.login', function(response) {
-        window.log(response);
         if (response.authResponse) {
           $('.fb-login-button').fadeOut();
         } else {
-          window.log('User cancelled login or did not fully authorize.');
+          console.log('User cancelled login or did not fully authorize.');
         }
       });
     }
