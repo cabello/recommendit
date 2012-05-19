@@ -147,7 +147,7 @@ while ($rec = mysql_fetch_assoc($works2)) {
 
     echo '<div class="row-fluid row-recommendation">';
     $rating = $avgs[$rec['id_worker']];
-    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
+    echo '    <div class="span5">'.$rec["name"].' - '.phone_mask($mask,$rec["phone"]).' <a class="rate_old_worker" data-toggle="modal" data-worker-name="'.$rec["name"].'" data-worker-id="'.$rec["id_worker"].'" data-service-name="'.$rec["service_name"].'" data-id-service="'.$rec['service_id'].'" href="#oldWorker">';
     for ($i = 1; $i <= 5; $i++) {
       if ($i <= $rating) {
         echo '<span class="icon-star"></span>&nbsp';
@@ -214,8 +214,6 @@ function stars($rating) {
 
 		      <div id='fb-root'></div>
 		      <script src='http://connect.facebook.net/en_US/all.js'></script>
-		      <p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
-		      <p id='msg'></p>
 
 		      <script>
 
@@ -229,6 +227,7 @@ function stars($rating) {
     					picture: 'http://fbrell.com/f8.jpg',
     					name: 'Facebook - RecommendIt',
     					caption: '',
+					message: 'Check out my new recommendation on RecommendIt!',
     					description: 'Share your recommendations, help your friends!'
 			      };
 
@@ -344,7 +343,9 @@ function stars($rating) {
         $('.rating2 a').hover(rating, off);
         $('.rating2 a').click(rateIt);
         $('#add-new-comment').click(function() {
-          $.post('new_comment.php', $('#new-comment-form').serialize());
+          $.post('new_comment.php', $('.new-comment-form').serialize(), function(){
+            $.jGrowl("Commentation added!")
+          });
           $('#oldWorker').modal('hide');
           $('#new-comment-comment').val('');
           resetRate();
@@ -359,7 +360,7 @@ function stars($rating) {
           $('#old_worker_id').val($(e.target.parentNode).data('worker-id'));
           $('#old_worker_message').html($(e.target.parentNode).data('worker-name'));
           $('#old_service_name').html($(e.target.parentNode).data('service-name'));
-          $('#old_service_id').val($(e.target.parentNode).data('service-id'));
+          $('#old_service_id').val($(e.target.parentNode).data('id-service'));
         });
       });
       </script>
