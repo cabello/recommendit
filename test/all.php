@@ -29,7 +29,6 @@ if ($servs) {
 	$service_id = $serv_i["id"];
 	$q1 = "SELECT * FROM worker where id_service = $service_id";
 	$works = mysql_query($q1);
-	echo $q1."<br />";
 	if ($works) {
     		while ($worker_i = mysql_fetch_assoc($works)) {
 			var_dump($worker_i);
@@ -41,19 +40,6 @@ if ($servs) {
 		}
 	}
     }
-}
-
-echo "<hr />";
-
-echo "Workers:<br />";
-if ($works) {
-    echo "<ul>";
-    while ($row = mysql_fetch_assoc($works)) {
-        echo "<li>";
-        print_r($row);
-        echo "</li>";
-    }
-    echo "</ul>";
 }
 
 echo "<hr />";
