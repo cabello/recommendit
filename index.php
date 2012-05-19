@@ -49,7 +49,7 @@
             <div class="span8">
               <div class="hero-unit">
                 <h1><i class="icon-list"></i> recommendIt</h1>
-                <h2>Friend 2 friend.</h2>
+                <h2 style="text-align: center;">friend 2 friend</h2>
 
                 <p style="text-align: center; padding: 25px;"><a class="btn btn-primary btn-large" id="roll" style="display:none;" href="workers.php">Lets roll! &raquo;</a></p>
 <div id="fb-root"></div>
@@ -112,8 +112,10 @@ oauth      : true
 
         <div class="fb-login-button" scope="<?php echo $permittion_names ?>" style="text-align: center; display: none;">Login with Facebook</div>
 
-        <div style="margin: auto; width:200px; padding: 15px;">
-          <div class="fb-like" data-href="http://fb-hacktoon.herokuapp.com/" data-send="true" data-width="450" data-show-faces="false" data-font="segoe ui"></div>
+        <div class="row-fluid">
+            <div class="span2">&nbsp;</div>
+            <div class="span8" style="padding: 15px;"><div class="fb-like" data-href="http://recommendit.herokuapp.com/" data-send="true" data-width="450" data-show-faces="false" data-font="segoe ui"></div></div>
+            <div class="span2">&nbsp;</div>
         </div>
         <hr>
 
